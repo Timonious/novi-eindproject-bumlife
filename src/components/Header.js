@@ -5,7 +5,7 @@ export const Header = () => {
     return (
         <>
 
-        <h2>logo, back to <NavLink exact to='/'>home</NavLink> en drunk mode switch</h2>
+        <h2>logo, back to <NavLink activeClassName="active" exact to='/'>home</NavLink> en drunk mode switch</h2>
         </>
     )
 }

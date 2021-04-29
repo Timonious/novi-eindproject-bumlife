@@ -1,18 +1,18 @@
 import React from "react"
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Main = () => {
     return (
         <>
-            <NavLink exact to='/drinken' >
+            <Link exact to='/drinken' >
                 <button type='button'>Drinken</button>
-            </NavLink>
-            <NavLink exact to='/slapen'>
+            </Link>
+            <Link exact to='/slapen'>
                 <button type='button'>Slapen</button>
-            </NavLink>
-            <NavLink exact to='/eten'>
+            </Link>
+            <Link exact to='/eten'>
                 <button type='button'>Eten</button>
-            </NavLink>
+            </Link>
 
         </>
     )

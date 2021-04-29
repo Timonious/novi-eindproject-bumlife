@@ -1,9 +1,9 @@
 import React from "react"
 
-export const Eat = () => {
+export const Alcalculator = () => {
     return (
         <>
-        <p>Eet locaties in de buurt</p>
+        <p>Formulier hier</p>
         </>
     )
 }
