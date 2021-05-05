@@ -8,7 +8,7 @@ export const Drink = () => {
                 <button type='button'>Alcoholocator</button>
             </Link>
             <p>vind alcoholische versnaperingen</p>
-            <Link>
+            <Link to='alcocalculator'>
                 <button type='button'>Alcocalculator</button>
             </Link>
             <p>en bereken de beste prijs!</p>

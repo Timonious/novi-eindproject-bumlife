@@ -15,3 +15,4 @@ Op te leveren:
 
 Ik heb ervoor gekozen het woord "home" te vermijden, omdat dit kwetsend kan zijn voor de bedoelde gebruiker.
 npm react router dom
+npm react hook form

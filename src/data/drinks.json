@@ -1,0 +1,108 @@
+[
+  {
+    "id": null,
+    "value": "",
+    "name": "",
+    "sizes": [],
+    "percentages": []
+  },
+  {
+    "id": 1,
+    "value": "beer",
+    "name": "Bier",
+    "sizes": [
+      250,
+      330,
+      500
+    ],
+    "percentages": [
+      2,
+      5,
+      6,
+      7,
+      11.6
+    ]
+  },
+  {
+    "id": 2,
+    "value": "port",
+    "name": "Port",
+    "sizes": [
+      200,
+      750,
+      1000
+    ],
+    "percentages": [
+      18,
+      19,
+      20
+    ]
+  },
+  {
+    "id": 3,
+    "value": "sherry",
+    "name": "Sherry",
+    "sizes": [
+      200,
+      500,
+      700,
+      750
+    ],
+    "percentages": [
+      15,
+      16,
+      17.5,
+      18,
+      20,
+      22
+    ]
+  },
+  {
+    "id": 4,
+    "value": "wine",
+    "name": "Wijn",
+    "sizes": [
+      200,
+      750,
+      1000,
+      3000
+    ],
+    "percentages": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  {
+    "id": 5,
+    "value": "other",
+    "name": "Anders",
+    "sizes": [
+      200,
+      250,
+      330,
+      450,
+      500,
+      700,
+      750,
+      1000,
+      1500,
+      3000,
+      5000
+    ],
+    "percentages": [
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45
+    ]
+  }
+]
