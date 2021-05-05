@@ -15,10 +15,10 @@ export const Alcalculator = () => {
         setError('')
         if (!category) { setError('Geen drank ingevoerd')
             return }
-        if (otherSize) size = otherSize*10
+        if (otherSize) {size = otherSize * 10}
         if (!size) { setError('Geen inhoudsmaat ingevoerd')
             return }
-        if (otherPercentage) percentage = otherPercentage
+        if (otherPercentage) {percentage = otherPercentage}
         if (!percentage) { setError('Geen alcoholpercentage ingevoerd')
             return }
         if (!price) { setError('Geen prijs ingevoerd')
@@ -106,7 +106,7 @@ reset({})
             {comparator && comparator.map((result) => {
                 return result
             })}
-            <h2>*A.P.L.= Alcohol per Liter</h2>
+            <p>*A.P.L.= Alcohol per Liter</p>
         </>
     )
 }
