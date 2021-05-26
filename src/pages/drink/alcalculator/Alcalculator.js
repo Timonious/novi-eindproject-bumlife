@@ -1,7 +1,7 @@
 import {useState} from "react"
 import {useForm} from "react-hook-form"
 import drinks from '../../../data/drinks.json'
-import {ColorCoderAPL} from "../../../components/ColorCoderAPL";
+import {colorCoderAPL} from "../../../helpers/colorCoderAPL";
 
 export const Alcalculator = () => {
     const [comparator, setComparator] = useState([])
@@ -32,7 +32,7 @@ export const Alcalculator = () => {
                         :
                         <span className='drink-name'>{drinks[category].name}</span>}
                     <span className='euro-teken'> € </span>
-                    <span className={ColorCoderAPL(alcPerLiter)}>{alcPerLiter}</span>
+                    <span className={colorCoderAPL(alcPerLiter)}>{alcPerLiter}</span>
                     <span className='apl'> A.P.L.</span>
                 </li>]
             )

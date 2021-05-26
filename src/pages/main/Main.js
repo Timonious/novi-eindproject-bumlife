@@ -4,14 +4,18 @@ import { Link } from "react-router-dom";
 export const Main = () => {
     return (
         <>
-            <Link exact to='/drinken' >
+
+            <Link to='/drinken' >
                 <button type='button'>Drinken</button>
             </Link>
-            <Link exact to='/slapen'>
+            <Link to='/slapen'>
                 <button type='button'>Slapen</button>
             </Link>
-            <Link exact to='/eten'>
+            <Link to='/eten'>
                 <button type='button'>Eten</button>
+            </Link>
+            <Link to='/sperma'>
+                <button type='button'>Test</button>
             </Link>
 
         </>

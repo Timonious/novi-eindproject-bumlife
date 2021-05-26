@@ -1,0 +1,72 @@
+[
+  {
+      "path": "eten",
+      "maxDistance": 1000,
+      "resultAmount": 4,
+      "queries": [
+        "fastfood",
+        "snackbar",
+        "kebab",
+        "shoarma"
+      ]
+  },
+  {
+      "path": "alcoholocator",
+      "maxDistance": 1000,
+      "resultAmount": 3,
+      "queries": [
+        "supermarkt",
+        "slijter"
+      ]
+  },
+  {
+      "path": "platte-pet",
+      "maxDistance": 5000,
+      "resultAmount": 1,
+      "queries": [
+        "politie"
+      ]
+  },
+  {
+      "path": "slaaphuis",
+      "maxDistance": 3000,
+      "resultAmount": 2,
+      "queries": [
+        "leger+des+heils",
+        "daklozen+opvang",
+        "iriszorg",
+        "nachtopvang",
+        "maatschappelijk+opvang",
+        "sociale+opvang"
+      ]
+  },
+  {
+      "path": "blote-hemel",
+      "maxDistance": 10000,
+      "resultAmount": 4,
+      "queries": [
+        "park",
+        "natuurgebied",
+        "tuin"
+      ]
+  },
+  {
+      "path": "overdekt",
+      "maxDistance": 3000,
+      "resultAmount": 4,
+      "queries": [
+        "brug",
+        "parkeer+garage"
+      ]
+  },
+  {
+    "path": "sperma",
+    "maxDistance": 3000,
+    "resultAmount": 20,
+    "queries": [
+      "petrol+station",
+      "shop",
+      "restaurant"
+    ]
+  }
+  ]

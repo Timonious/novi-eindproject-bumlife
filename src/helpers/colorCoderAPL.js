@@ -1,6 +1,5 @@
-import React from "react";
 
-export const ColorCoderAPL = (apl) => {
+export const colorCoderAPL = (apl) => {
     console.log('colorcoder wordt uitgevoerd')
     if (apl >= 0 && apl <= 15) {
         return 'green'
