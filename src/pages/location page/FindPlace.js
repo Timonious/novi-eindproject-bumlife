@@ -19,7 +19,7 @@ export const FindPlace = ({lon, lat}) => {
     const [mapError, setMapError] = useState(false)
     const [nothingNearbyError, setNothingNearbyError] = useState(false)
     const [error, setError] = useState(false)
-    const [placeResult, setPlaceResult] = useState([])
+    const [placeResult, setPlaceResult] = useState(null)
     const [placesResultArray, setPlacesResultArray] = useState([])
     const [inRangePlaces, setInRangePlaces] = useState(null)
     const [coordinates, setCoordinates] = useState(null)
@@ -30,9 +30,9 @@ export const FindPlace = ({lon, lat}) => {
         setLoading(true)
         setError(false)
         try {
-            console.log('ik haal places op')
             const {data: {items}} = await axios.get(`https://discover.search.hereapi.com/v1/discover?in=circle:${lat},${lon};r=${maxDistance}&q=${query}&apiKey=${apiKey}`)
             setPlaceResult(items)
+            console.log(items)
         } catch (e) {
             console.error(e)
             setError(true)
@@ -44,7 +44,6 @@ export const FindPlace = ({lon, lat}) => {
         setLoading(true)
         setMapError(false)
         try {
-            console.log('ik haal de map op')
             const {data} = await axios.get(`https://image.maps.ls.hereapi.com/mia/1.6/mapview?apiKey=${apiKey}&poi=${coordinates}&w=400&h=300&z=15`,
                 {responseType: "blob"})
             setMap(URL.createObjectURL(data))
@@ -64,13 +63,13 @@ export const FindPlace = ({lon, lat}) => {
     }, [lon])
 
     useEffect(() => {
-        if (placeResult.length > 0) {
+        if (placeResult) {
             setPlacesResultArray([...placesResultArray, placeResult])
         }
     }, [placeResult])
 
     useEffect(() => {
-        if (placesResultArray.length === queryAmount) {
+        if (placesResultArray.length === queryAmount) { console.log('ik')
             let combinedArray = []
             for (let j = 0; j < placesResultArray.length; j++) {
                 for (let k = 0; k < placesResultArray[j].length; k++) {
@@ -83,8 +82,8 @@ export const FindPlace = ({lon, lat}) => {
                 if (!map.has(item.position.lat && item.position.lng)) {
                     map.set(item.position.lat && item.position.lng, true)
                     filteredData.push({
-                        distance: item.distance,
                         data: item.address.label,
+                        distance: item.distance,
                         lat: item.position.lat,
                         lon: item.position.lng
                     })

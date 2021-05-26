@@ -31,7 +31,7 @@ export const Alcalculator = () => {
                         <span className='drink-name'>{other}</span>
                         :
                         <span className='drink-name'>{drinks[category].name}</span>}
-                    <span className='euro-teken'> € </span>
+                    <span className='euro-symbol'> € </span>
                     <span className={colorCoderAPL(alcPerLiter)}>{alcPerLiter}</span>
                     <span className='apl'> A.P.L.</span>
                 </li>]

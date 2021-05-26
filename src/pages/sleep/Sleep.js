@@ -44,13 +44,20 @@ export const Sleep = ({ weatherData, error }) => {
             {rain && avgNightTemp > 10 && <Link to='/overdekt'>
                 <button type='button'>Overdekt</button>
             </Link>}
-            {avgNightTemp < 10 && <Link to='/overdekt'>
+
+
+            {avgNightTemp < 10 ?
+                <Link to='/overdekt'>
                 <button type='button'>Overdekt</button>
             </Link>
-                 }
-            {!rain && avgNightTemp > 10 && <><Link to='/blote-hemel'>
+
+            :  <><Link to='/blote-hemel'>
                 <button type='button'>Buiten</button>
-            </Link><span className='recommended'>Aanrader!</span></>}
+            </Link>
+            {!rain && avgNightTemp > 10 && <span className='recommended'>Aanrader!</span>}
+            </>}
+
+
             <Link to='/is-er-geld'>
                 <button type='button'>Binnen</button>
             </Link>

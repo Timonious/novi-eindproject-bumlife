@@ -1,0 +1,20 @@
+{
+  "dm": {
+    "mainCN": {
+      "drinkButton": "drink-button-dm",
+      "sleepButton": "sleep-button-dm",
+      "eatButton": "eat-button-dm"
+    },
+    "mainTxt": {
+    }
+  },
+  "nm": {
+    "mainCN": {
+      "drinkButton": "drink-button-nm",
+      "sleepButton": "sleep-button-nm",
+      "eatButton": "eat-button-nm"
+    },
+    "mainTxt": {
+    }
+  }
+}

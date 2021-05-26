@@ -1,23 +1,24 @@
-import React from "react"
-import { Link } from "react-router-dom";
+import React, { useContext } from "react"
+import {Link} from "react-router-dom"
+import { DrunkModeContext } from "../../context/DrunkModeContextProvider"
+import content from "../../data/content.json"
 
 export const Main = () => {
+    const { mode } = useContext(DrunkModeContext)
     return (
         <>
-
-            <Link to='/drinken' >
-                <button type='button'>Drinken</button>
-            </Link>
-            <Link to='/slapen'>
-                <button type='button'>Slapen</button>
-            </Link>
-            <Link to='/eten'>
-                <button type='button'>Eten</button>
-            </Link>
-            <Link to='/sperma'>
-                <button type='button'>Test</button>
-            </Link>
-
+            <p>{mode}</p>
+            <div className='button-container'>
+                <Link to='/drinken'>
+                    <button className='drink-button' type='button'>Drinken</button>
+                </Link>
+                <Link to='/slapen'>
+                    <button className='drink-button' type='button'>Slapen</button>
+                </Link>
+                <Link to='/eten'>
+                    <button className='drink-button' type='button'>Eten</button>
+                </Link>
+            </div>
         </>
     )
 }

@@ -23,7 +23,7 @@ function App() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        function success(position) {
+        function getCoords(position) {
             if (position.coords.latitude > 0 && position.coords.longitude > 0) {
                 setLat(position.coords.latitude)
                 setLonRound(Math.round(position.coords.longitude))
@@ -31,7 +31,7 @@ function App() {
                 setLatRound(Math.round(position.coords.latitude))
             }
         }
-        navigator.geolocation.getCurrentPosition(success)
+        navigator.geolocation.getCurrentPosition(getCoords)
 
     }, [])
 
@@ -57,7 +57,6 @@ function App() {
         <>
             <Header/>
             {loading ? <p className='loading'>laden</p> : <SunsetCounter weatherData={weatherData} error={error}/>}
-
             <Switch>
                 <Route path='/drinken'>
                     <Drink/>
@@ -71,8 +70,6 @@ function App() {
                 <Route path='/is-er-geld'>
                     <FundQuery/>
                 </Route>
-                {/*de Findplace moet iets efficienter gemaakt worden, de queries moeten doorlopen worden, */}
-               {/*en de resultaten gesorteerd op locatie weergegeven*/}
                 <Route path='/:path'>
                     <FindPlace
                         lon={lon}
