@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import './App.css'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
+import axios from "axios"
 import {Header} from "./components/Header"
 import {Main} from "./pages/main/Main"
 import {Drink} from "./pages/drink/Drink"
@@ -8,12 +9,15 @@ import {Sleep} from "./pages/sleep/Sleep"
 import {FindPlace} from "./pages/location page/FindPlace"
 import {FundQuery} from "./pages/sleep/FundQuery"
 import {Alcalculator} from "./pages/drink/alcalculator/Alcalculator"
-import {SunsetCounter} from "./components/SunsetCounter";
-import axios from "axios";
+import {SunsetCounter} from "./components/SunsetCounter"
+import {AuthenticateDrunkness} from "./pages/AuthenticateDrunkness/AuthenticateDrunkness"
+import {DrunkModeContext, DrunkModeContextProvider} from "./context/DrunkModeContextProvider"
 
 const apiKey = process.env.REACT_APP_API_KEY_WEATHER
 
-function App() {
+const App = () => {
+
+    const { isDrunk, mode } = useContext(DrunkModeContext)
     const [lat, setLat] = useState(null)
     const [lon, setLon] = useState(null)
     const [latRound, setLatRound] = useState(null)
@@ -23,7 +27,7 @@ function App() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        function getCoords(position) {
+        const getCoords = (position) => {
             if (position.coords.latitude > 0 && position.coords.longitude > 0) {
                 setLat(position.coords.latitude)
                 setLonRound(Math.round(position.coords.longitude))
@@ -31,6 +35,7 @@ function App() {
                 setLatRound(Math.round(position.coords.latitude))
             }
         }
+
         navigator.geolocation.getCurrentPosition(getCoords)
 
     }, [])
@@ -59,22 +64,25 @@ function App() {
             {loading ? <p className='loading'>laden</p> : <SunsetCounter weatherData={weatherData} error={error}/>}
             <Switch>
                 <Route path='/drinken'>
-                    <Drink/>
+                    {!isDrunk && mode === 'dm' ? <Redirect to='/is-dit-wel-verstandig'/> : <Drink/>}
                 </Route>
                 <Route path='/slapen'>
                     <Sleep weatherData={weatherData} error={error}/>
                 </Route>
                 <Route path='/alcocalculator'>
-                    <Alcalculator/>
+                    {!isDrunk && mode === 'dm' ? <Redirect to='/is-dit-wel-verstandig'/> : <Alcalculator/>}
                 </Route>
                 <Route path='/is-er-geld'>
                     <FundQuery/>
+                </Route>
+                <Route path='/is-dit-wel-verstandig'>
+                    <AuthenticateDrunkness/>
                 </Route>
                 <Route path='/:path'>
                     <FindPlace
                         lon={lon}
                         lat={lat}
-                       />
+                    />
                 </Route>
                 <Route path='/'>
                     <Main/>

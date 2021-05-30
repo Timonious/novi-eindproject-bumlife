@@ -1,16 +1,32 @@
-import React from "react"
-import {Link} from "react-router-dom";
+import React, {useContext} from "react"
+import {Link} from "react-router-dom"
+import { DrunkModeContext } from "../../context/DrunkModeContextProvider"
+import content from "../../data/content.json"
 
 export const FundQuery = () => {
+    const {mode} = useContext(DrunkModeContext)
+    const {[mode]: {
+        fundCN: {
+            tab,
+            questionCn,
+            fundButton
+        },
+        fundTxt: {
+            question,
+            yes,
+            no
+        }
+    }
+    } = content
     return (
-        <>
-        <p>Kunt u heden een plaats in het slaaphuis financieren?</p>
+        <div className={tab}>
+        <p className={questionCn}>{question}</p>
         <Link to='/slaaphuis'>
-            <button type='button'>ja zeker wel</button>
+            <button type='button' className={fundButton}>{yes}</button>
         </Link>
             <Link to='/platte-pet'>
-                <button type='button'>helaas niet</button>
+                <button type='button' className={fundButton}>{no}</button>
             </Link>
-        </>
+        </div>
     )
 }

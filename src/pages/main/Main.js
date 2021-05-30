@@ -5,18 +5,23 @@ import content from "../../data/content.json"
 
 export const Main = () => {
     const { mode } = useContext(DrunkModeContext)
+    const { [mode]: {mainCN: {
+        buttonContainer,
+        drinkButton,
+        sleepButton,
+        eatButton}
+        } } = content
     return (
         <>
-            <p>{mode}</p>
-            <div className='button-container'>
+            <div className={buttonContainer}>
                 <Link to='/drinken'>
-                    <button className='drink-button' type='button'>Drinken</button>
+                    <button className={drinkButton} type='button'>Drinken</button>
                 </Link>
                 <Link to='/slapen'>
-                    <button className='drink-button' type='button'>Slapen</button>
+                    <button className={sleepButton} type='button'>Slapen</button>
                 </Link>
                 <Link to='/eten'>
-                    <button className='drink-button' type='button'>Eten</button>
+                    <button className={eatButton} type='button'>Eten</button>
                 </Link>
             </div>
         </>

@@ -1,17 +1,38 @@
-import React from "react"
-import {Link} from "react-router-dom";
+import React, {useContext} from "react"
+import {Link} from "react-router-dom"
+import {DrunkModeContext} from "../../context/DrunkModeContextProvider"
+import content from "../../data/content.json"
 
 export const Drink = () => {
+    const {mode} = useContext(DrunkModeContext)
+    const {[mode]: {
+            drinkCN: {
+                tab,
+                drinkButtonContainer,
+                alcoholocatorButton,
+                alcocalculatorButton,
+                findDrinkCn,
+                calculateDrinkCn
+            },
+            drinkTxt: {
+                findDrinkTxt,
+                calculateDrinkTxt
+            }
+        }
+    } = content
+
     return (
-        <>
-            <Link to='/alcoholocator'>
-                <button type='button'>Alcoholocator</button>
-            </Link>
-            <p>vind alcoholische versnaperingen</p>
-            <Link to='alcocalculator'>
-                <button type='button'>Alcocalculator</button>
-            </Link>
-            <p>en bereken de beste prijs!</p>
-        </>
+        <div className={tab}>
+            <div className={drinkButtonContainer}>
+                <Link to='/alcoholocator'>
+                    <button className={alcoholocatorButton} type='button'>Alcoholocator</button>
+                </Link>
+                <p className={findDrinkCn}>{findDrinkTxt}</p>
+                <Link to='alcocalculator'>
+                    <button className={alcocalculatorButton} type='button'>Alcocalculator</button>
+                </Link>
+                <p className={calculateDrinkCn}>{calculateDrinkTxt}</p>
+            </div>
+        </div>
     )
 }

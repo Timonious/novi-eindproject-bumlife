@@ -3,21 +3,32 @@ import React, {createContext, useState} from 'react'
 export const DrunkModeContext = createContext(null)
 
 export function DrunkModeContextProvider({children}) {
-    const [isDrunk, toggleIsDrunk] = useState(false)
+    const [admittedDrunk, toggleAdmittedDrunk] = useState(false)
     const [mode, setMode] = useState('nm')
     const toggleMode = () => {
-        if (isDrunk) {
-            toggleIsDrunk(false)
+        if (mode === 'dm') {
             setMode('nm')
+            if (admittedDrunk) {
+                toggleAdmittedDrunk(false)
+            }
         } else {
-            toggleIsDrunk(true)
             setMode('dm')
+        }
+    }
+    const toggleAA = () => {
+        if (admittedDrunk) {
+            toggleAdmittedDrunk(false)
+        }
+        else {
+            toggleAdmittedDrunk(true)
         }
     }
     return (
         <DrunkModeContext.Provider value={{
             toggleMode,
-            mode: mode
+            toggleAA,
+            mode: mode,
+            isDrunk: admittedDrunk
         }}>
             {children}
         </DrunkModeContext.Provider>

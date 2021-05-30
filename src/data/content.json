@@ -1,20 +1,155 @@
 {
   "dm": {
     "mainCN": {
+      "tab": "main-tab-dm",
+      "buttonContainer": "main-button-container-dm",
       "drinkButton": "drink-button-dm",
       "sleepButton": "sleep-button-dm",
       "eatButton": "eat-button-dm"
     },
-    "mainTxt": {
+    "drinkCN": {
+      "tab": "drink-tab-dm",
+      "drinkButtonContainer": "drink-button-container-dm",
+      "alcoholocatorButton": "alcoholocator-button-dm",
+      "alcocalculatorButton": "alcocalculator-button-dm",
+      "findDrinkCn": "alcoholocator-description-dm",
+      "calculateDrinkCn": "alcocalculator-description-dm"
+    },
+    "drinkTxt": {
+      "findDrinkTxt": "vind alcohol!",
+      "calculateDrinkTxt": "bereken de beste prijs"
+    },
+    "sleepCN": {
+      "tab": "sleep-tab-dm",
+      "weatherSegment": "sleep-weather-segment-dm",
+      "buttonContainer": "sleep-button-container-dm",
+      "button": "sleep-button-dm",
+      "recommend": "recommended-dm",
+      "retrieveError": "sleep-error-dm"
+    },
+    "findCN": {
+      "tab": "find-tab-dm",
+      "findLoading": "find-loading-dm",
+      "findError": "find-error-dm",
+      "mapImg": "find-map-nm",
+      "placesList": "find-places-list-dm",
+      "placeItem": "find-place-item-dm",
+      "placeName": "find-place-name-dm",
+      "placeStreet": "find-place-street-dm",
+      "placePostal": "find-place-postal-dm",
+      "goButton": "find-go-button-dm"
+    },
+    "fundQCN": {
+      "questionCn": "fund-q-dm",
+      "tab": "fund-tab-dm",
+      "fundButton": "fund-button-dm"
+    },
+    "fundTxt": {
+      "question": "heb je geld?",
+      "yes": "ja",
+      "no": "nee"
+    },
+    "alcocalculatorCN": {
+      "tab": "calc-tab-dm",
+      "calcForm": "calc-form-dm",
+      "formLabel": "calc-form-label-dm",
+      "selector": "calc-selector-dm",
+      "option": "calc-selector-option-dm",
+      "drinkField": "calc-drink-field-dm",
+      "sizeField": "calc-size-field-dm",
+      "alcoholField": "calc-alcohol-field-dm",
+      "priceField": "calc-price-field-dm",
+      "submitButton": "calc-button-dm",
+      "comparatorTitle": "calc-comp-title-dm",
+      "comparatorTab": "calc-comp-tab-dm",
+      "comparatorList": "calc-comp-list-dm",
+      "comparatorItem": "calc-comp-item-dm",
+      "comparatorItemName": "calc-comp-name-dm",
+      "comparatorEuro": "calc-comp-euro-dm",
+      "comparatorItemApl": "calc-comp-apl-dm",
+      "comparatorItemAplName": "calc-comp-apl-name-dm",
+      "comparatorItemAplExplain": "calc-comp-apl-exp-dm"
+    },
+    "sunCounterCN": {
+      "wrapper": "sun-wrapper-dm",
+      "time": "time-dm",
+      "text": "sun-text-dm"
     }
   },
   "nm": {
     "mainCN": {
+      "buttonContainer": "main-button-container-nm",
       "drinkButton": "drink-button-nm",
       "sleepButton": "sleep-button-nm",
       "eatButton": "eat-button-nm"
     },
-    "mainTxt": {
+    "drinkCN": {
+      "tab": "drink-tab-nm",
+      "drinkButtonContainer": "drink-button-container-nm",
+      "alcoholocatorButton": "alcoholocator-button-nm",
+      "alcocalculatorButton": "alcocalculator-button-nm",
+      "findDrinkCn": "alcoholocator-description-nm",
+      "calculateDrinkCn": "alcocalculator-description-nm"
+    },
+    "drinkTxt": {
+      "findDrinkTxt": "vind alcoholische versnaperingen!",
+      "calculateDrinkTxt": "en calculeer de beste prijs!"
+    },
+    "sleepCN": {
+      "tab": "sleep-tab-nm",
+      "weatherSegment": "sleep-weather-segment-nm",
+      "buttonContainer": "sleep-button-container-nm",
+      "button": "sleep-button-nm",
+      "recommend": "recommended-nm",
+      "retrieveError": "sleep-error-nm"
+    },
+    "findCN": {
+      "tab": "find-tab-nm",
+      "findLoading": "find-loading-nm",
+      "findError": "find-error-nm",
+      "mapImg": "find-map-nm",
+      "placesList": "find-places-list-nm",
+      "placeItem": "find-place-item-nm",
+      "placeName": "find-place-name-nm",
+      "placeStreet": "find-place-street-nm",
+      "placePostal": "find-place-postal-nm",
+      "goButton": "find-go-button-nm"
+    },
+    "fundQCN": {
+      "questionCn": "fund-q-nm",
+      "tab": "fund-tab-nm",
+      "fundButton": "fund-button-nm"
+    },
+    "fundTxt": {
+      "question": "Kunt u heden een plaats in het slaaphuis financieren?",
+      "yes": "ja zeker wel",
+      "no": "helaas niet"
+    },
+      "alcocalculatorCN": {
+      "tab": "calc-tab-nm",
+      "calcForm": "calc-form-nm",
+      "formLabel": "calc-form-label-nm",
+      "selector": "calc-selector-nm",
+      "option": "calc-selector-option-nm",
+      "drinkField": "calc-drink-field-nm",
+      "sizeField": "calc-size-field-nm",
+      "alcoholField": "calc-alcohol-field-nm",
+      "priceField": "calc-price-field-nm",
+      "submitButton": "calc-button-nm",
+      "comparatorTitle": "calc-comp-title-nm",
+      "comparatorTab": "calc-comp-tab-nm",
+      "comparatorList": "calc-comp-list-nm",
+      "comparatorItem": "calc-comp-item-nm",
+      "comparatorItemName": "calc-comp-name-nm",
+      "comparatorEuro": "calc-comp-euro-nm",
+      "comparatorItemApl": "calc-comp-apl-nm",
+      "comparatorItemAplName": "calc-comp-apl-name-nm",
+      "comparatorItemAplExplain": "calc-comp-apl-exp-nm"
+    },
+    "sunCounterCN": {
+      "wrapper": "sun-wrapper-nm",
+      "time": "time-nm",
+      "text": "sun-text-nm"
     }
   }
 }

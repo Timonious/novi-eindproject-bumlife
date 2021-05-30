@@ -1,9 +1,33 @@
-import {useState} from "react"
+import {useState, useContext} from "react"
 import {useForm} from "react-hook-form"
 import drinks from '../../../data/drinks.json'
 import {colorCoderAPL} from "../../../helpers/colorCoderAPL";
+import { DrunkModeContext } from "../../../context/DrunkModeContextProvider"
+import content from "../../../data/content.json"
 
 export const Alcalculator = () => {
+    const { mode } = useContext(DrunkModeContext)
+    const { [mode]: {alcocalculatorCN: {
+        tab,
+        calcForm,
+        formLabel,
+        selector,
+        option,
+        drinkField,
+        sizeField,
+        alcoholField,
+        priceField,
+        submitButton,
+        comparatorTitle,
+        comparatorTab,
+        comparatorList,
+        comparatorItem,
+        comparatorItemName,
+        comparatorEuro,
+        comparatorItemApl,
+        comparatorItemAplName,
+        comparatorItemAplExplain}
+    } } = content
     const [comparator, setComparator] = useState([])
     const [error, setError] = useState('')
     const {register, handleSubmit, watch, reset} = useForm(
@@ -13,72 +37,94 @@ export const Alcalculator = () => {
     const selectedPercentage = watch('percentage')
     const onSubmit = ({size, percentage, price, category, other, otherSize, otherPercentage}) => {
         setError('')
-        if (!category) { setError('Geen drank ingevoerd')
-            return }
-        if (otherSize) {size = otherSize * 10}
-        if (!size) { setError('Geen inhoudsmaat ingevoerd')
-            return }
-        if (otherPercentage) {percentage = otherPercentage}
-        if (!percentage) { setError('Geen alcoholpercentage ingevoerd')
-            return }
-        if (!price) { setError('Geen prijs ingevoerd')
-            return }
+        if (!category) {
+            setError('Geen drank ingevoerd')
+            return
+        }
+        if (otherSize) {
+            size = otherSize * 10
+        }
+        if (!size) {
+            setError('Geen inhoudsmaat ingevoerd')
+            return
+        }
+        if (otherPercentage) {
+            percentage = otherPercentage
+        }
+        if (!percentage) {
+            setError('Geen alcoholpercentage ingevoerd')
+            return
+        }
+        if (!price) {
+            setError('Geen prijs ingevoerd')
+            return
+        }
+
         const alcPerLiter = Math.round(price / size * 1000 / percentage * 100)
-            setComparator(
-                [...comparator, <li key={comparator.length}>
-                    {category > drinks.length-2
-                        ?
-                        <span className='drink-name'>{other}</span>
-                        :
-                        <span className='drink-name'>{drinks[category].name}</span>}
-                    <span className='euro-symbol'> € </span>
-                    <span className={colorCoderAPL(alcPerLiter)}>{alcPerLiter}</span>
-                    <span className='apl'> A.P.L.</span>
-                </li>]
-            )
-reset({})
+        setComparator(
+            [...comparator,
+                <li key={comparator.length} className={comparatorItem}>
+                {category > drinks.length - 2
+                    ?
+                    <span className={comparatorItemName}>{other}</span>
+                    :
+                    <span className={comparatorItemName}>{drinks[category].name}</span>}
+                <span className={comparatorEuro}> € </span>
+                <span className={comparatorItemApl}>
+                <span className={colorCoderAPL(alcPerLiter)}>{alcPerLiter}</span>
+            </span>
+                <span className={comparatorItemAplName}> A.P.L.</span>
+            </li>]
+        )
+        reset({})
+
     }
     return (
-        <>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <label>soort versnapering <select {...register('category' )}>
+        <div className={tab}>
+            <form className={calcForm} onSubmit={handleSubmit(onSubmit)}>
+                <label className={formLabel} htmlFor='drink-kind'>soort versnapering</label>
+                    <select className={selector} id='drink-kind'{...register('category')}>
                     {drinks.map((drink) => {
                         return (
-                            <option key={drink.id} value={drink.id}>{drink.name}</option>
+                            <option className={option} key={drink.id} value={drink.id}>{drink.name}</option>
                         )
                     })}
-                </select></label>
-                {selectedBooze > drinks.length-2 && (
-                        <input type='text' name='other' placeholder='drank' {...register('other')}/>
+                </select>
+                {selectedBooze > drinks.length - 2 && (
+                    <input className={drinkField} type='text' name='other' placeholder='drank' {...register('other')}/>
                 )}
                 {selectedBooze > 0 && <>
-                    <label>Inhoudsmaat<select {...register('size')}>
-                        <option value=""> </option>
+                    <label className={formLabel} htmlFor='volume'>Inhoudsmaat</label>
+                    <select className={selector} id='volume' {...register('size')}>
+                        <option className={option} value=""/>
                         {drinks[selectedBooze].sizes.map((size) => {
                             return (
-                                <option key={size} value={size}>{size / 10}Cl</option>
+                                <option className={option} key={size} value={size}>{size / 10}Cl</option>
                             )
                         })}
-                        <option value="Anders">Anders</option>
+                        <option className={option} value="Anders">Anders</option>
                     </select>
-                    </label>
+
                     {selectedSize === 'Anders' && (
-                        <input type='text' name='other-size' placeholder='inhoudsmaat' {...register('otherSize')}/>)}
-                    <label>Alcohol<select {...register('percentage', )}>
-                        <option value=""> </option>
+                        <input type='text' className={sizeField} name='other-size' placeholder='inhoudsmaat (cl)' {...register('otherSize')}/>)}
+                    <label className={formLabel} htmlFor='alcohol'>Alcohol</label>
+                    <select id='alcohol' className={selector} {...register('percentage',)}>
+                        <option value=""/>
                         {drinks[selectedBooze].percentages.map((percentage) => {
                             return (
-                                <option key={percentage} value={percentage}>{percentage}%</option>
+                                <option className={option} key={percentage} value={percentage}>{percentage}%</option>
                             )
                         })}
-                        <option value="other">Anders</option>
-                    </select></label>
+                        <option className={option} value="other">Anders</option>
+                    </select>
                     {selectedPercentage === 'other' && (
-                        <label>
-                            Alcohol
+                        <>
+                        <label className={formLabel} htmlFor='custom-alcohol'>
+                            Alcohol</label>
                             <input type='number'
                                    name='otherPercentage'
-                                   className='custom-percentage'
+                                   className={alcoholField}
+                                   id='custom-alcohol'
                                    placeholder='Alcoholpercentage'
                                    {...register(
                                        'otherPercentage',
@@ -86,27 +132,31 @@ reset({})
                                            maxLength: 2,
                                            minLength: 1
                                        })}/>
-                                   %
-                        </label>  )}
+                            %
+                        </>)}
                 </>}
                 <label>€
                     <input type='text'
                            name='price'
-                           className='price-input'
-                               placeholder='prijs'
+                           className={priceField}
+                           placeholder='prijs'
                            {...register(
                                'price',
                                {pattern: /^[0-9]+(\.[0-9][0-9]?)?$/i,}
                            )}/>
                 </label>
-                <button name='submit' type='submit'>Verzend</button>
+                <button className={submitButton} name='submit' type='submit'>Verzend</button>
                 {error && <p className='error-message'>{error}</p>}
             </form>
-            <h1>VERGELIJKER</h1>
+            <div className={comparatorTab}>
+            <h1 className={comparatorTitle}>VERGELIJKER</h1>
+            <ul className={comparatorList}>
             {comparator && comparator.map((result) => {
                 return result
             })}
-            <p>*A.P.L.= Alcohol per Liter</p>
-        </>
+        </ul>
+            <p className={comparatorItemAplExplain}>*A.P.L.= Alcohol per Liter</p>
+        </div>
+        </div>
     )
 }

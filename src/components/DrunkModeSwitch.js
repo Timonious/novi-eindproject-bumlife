@@ -2,18 +2,14 @@ import React, { useState, useContext, useEffect } from 'react'
 import { DrunkModeContext } from "../context/DrunkModeContextProvider"
 
 export const DrunkModeSwitch = () => {
-    const [checked, toggleChecked] = useState(false)
-    const { toggleMode } = useContext(DrunkModeContext)
-    useEffect(()=> toggleMode, [checked])
+    const { toggleMode, mode } = useContext(DrunkModeContext)
     return (
-        <div className='switch-wrapper'>
-            <input
-            type='checkbox'
+       <span className='switch-wrapper'>
+            <button
+            type='button'
             className='switch'
-            checked={checked}
-            onChange={() => toggleChecked(!checked)}
-            />
-            <p className='switch-label'>Drunk-mode</p>
-        </div>
+            onClick={toggleMode}
+            >{mode==='dm' ? 'on' : 'off'}</button>
+        Drunk-mode</span>
     )
 }

@@ -1,1 +1,0 @@
-// hier moet de de comparator uit alcocalculator functie komen

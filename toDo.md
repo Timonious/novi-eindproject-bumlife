@@ -5,9 +5,10 @@
 - [x] alle API MAPs logica #fml
 - [x] location page correct laten renderen
 - [] aanpassingen maken om de map naar wens te laten renderen (uiterlijk)
-- [x] location puntjes op de i
+- [] location puntjes op de i (go button)
+- [] titels laten renderenbij places
 - [] placeQ.json aanpassen tot compatible
-- [] gezeur wat je alleen ziet als drunk mode aan is (misschien niet meer drinken????)
+- [x] gezeur wat je alleen ziet als drunk mode aan is (misschien niet meer drinken????) met redirect
 - [] login gezeur
 - [] alle functions omschrijven naar arrow functions, omdat het woord function schrijven stom is.
 - [] drunk mode context provider, en alle drunk mode content

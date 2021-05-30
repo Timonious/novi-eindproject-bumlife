@@ -1,21 +1,39 @@
-import React, {useEffect, useState} from "react"
-import {useParams, useRouteMatch} from 'react-router-dom'
+import React, {useEffect, useState, useContext} from "react"
+import {useParams, useRouteMatch, Redirect} from 'react-router-dom'
 import axios from "axios"
 import {adress} from '../../helpers/adressSplit'
+
+import {DrunkModeContext} from "../../context/DrunkModeContextProvider"
+import content from "../../data/content.json"
 import placesQ from '../../data/placesQuery.json'
 
 const apiKey = process.env.REACT_APP_API_KEY_MAPS
 
 export const FindPlace = ({lon, lat}) => {
+    const {mode, isDrunk} = useContext(DrunkModeContext)
+    const {
+        [mode]: {
+            findCN: {
+                tab,
+                findLoading,
+                findError,
+                mapImg,
+                placesList,
+                placeItem,
+                placeName,
+                placeStreet,
+                placePostal,
+                goButton
+            }
+        }
+    } = content
+
     const {path} = useParams()
     useRouteMatch('/:path')
-
-    const i = placesQ.findIndex(x => x.path === path)
-    const q = placesQ[i].queries
-    const queryAmount = q.length
-    const resultAmount = placesQ[i].resultAmount
-    const maxDistance = placesQ[i].maxDistance
-
+    const i = placesQ.findIndex(x => x.pathName === path)
+    const {[i]: {resultAmount, resultAmountDm, maxDistance, maxDistanceDm, queries}} = placesQ
+    const [maxResults, setMaxResults] = useState(0)
+    const [maxDist, setMaxDist] = useState(null)
     const [mapError, setMapError] = useState(false)
     const [nothingNearbyError, setNothingNearbyError] = useState(false)
     const [error, setError] = useState(false)
@@ -30,9 +48,8 @@ export const FindPlace = ({lon, lat}) => {
         setLoading(true)
         setError(false)
         try {
-            const {data: {items}} = await axios.get(`https://discover.search.hereapi.com/v1/discover?in=circle:${lat},${lon};r=${maxDistance}&q=${query}&apiKey=${apiKey}`)
+            const {data: {items}} = await axios.get(`https://discover.search.hereapi.com/v1/discover?in=circle:${lat},${lon};r=${maxDist}&q=${query}&apiKey=${apiKey}`)
             setPlaceResult(items)
-            console.log(items)
         } catch (e) {
             console.error(e)
             setError(true)
@@ -55,12 +72,25 @@ export const FindPlace = ({lon, lat}) => {
     }
 
     useEffect(() => {
-        if (lon && lat) {
-            for (let j = 0; j < queryAmount; j++) {
-                getLocation(q[j])
+        if (mode === 'dm') {
+            setMaxResults(resultAmountDm)
+            setMaxDist(maxDistanceDm)
+        }
+        if (mode === 'nm') {
+            setMaxResults(resultAmount)
+            setMaxDist(maxDistance)
+        }
+        setPlacesResultArray([])
+        setMap(null)
+        setNothingNearbyError(false)
+    }, [mode])
+    useEffect(() => {
+        if (lon && lat && maxDist) {
+            for (let i = 0; i < queries.length; i++) {
+                getLocation(queries[i])
             }
         }
-    }, [lon])
+    }, [lon, maxDist])
 
     useEffect(() => {
         if (placeResult) {
@@ -68,43 +98,42 @@ export const FindPlace = ({lon, lat}) => {
         }
     }, [placeResult])
 
+
     useEffect(() => {
-        if (placesResultArray.length === queryAmount) { console.log('ik')
-            let combinedArray = []
-            for (let j = 0; j < placesResultArray.length; j++) {
-                for (let k = 0; k < placesResultArray[j].length; k++) {
-                    combinedArray.push(placesResultArray[j][k])
-                }
-            }
-            const filteredData = []
+        if (placesResultArray.length === queries.length) {
+            let combinedFilteredArray = []
             const map = new Map()
-            for (const item of combinedArray) {
-                if (!map.has(item.position.lat && item.position.lng)) {
-                    map.set(item.position.lat && item.position.lng, true)
-                    filteredData.push({
-                        data: item.address.label,
-                        distance: item.distance,
-                        lat: item.position.lat,
-                        lon: item.position.lng
-                    })
+            for (let i = 0; i < placesResultArray.length; i++) {
+                for (let j = 0; j < placesResultArray[i].length; j++) {
+                    for (const item of placesResultArray[i]) {
+                        if (!map.has(item.position.lat && item.position.lng)) {
+                            map.set(item.position.lat && item.position.lng, true)
+                            combinedFilteredArray.push({
+                                data: item.address.label,
+                                distance: item.distance,
+                                lat: item.position.lat,
+                                lon: item.position.lng
+                            })
+                        }
+                    }
                 }
             }
-            filteredData.sort(function (a, b) {
+            combinedFilteredArray.sort(function (a, b) {
                 return a.distance - b.distance;
             })
-            const slicedData = filteredData.slice(0, resultAmount)
+            const slicedData = combinedFilteredArray.slice(0, maxResults)
             setInRangePlaces(slicedData)
             if (slicedData.length > 0) {
-                let newArray = []
+                let CoordinateArray = []
                 for (let i = 0; i < slicedData.length; i++) {
-                    newArray.push(slicedData[i].lat, slicedData[i].lon)
+                    CoordinateArray.push(slicedData[i].lat, slicedData[i].lon)
                 }
-                setCoordinates(newArray)
+                setCoordinates(CoordinateArray)
             } else {
                 setNothingNearbyError(true)
             }
         }
-    }, [placesResultArray])
+    }, [placesResultArray, maxResults])
 
     useEffect(() => {
         if (coordinates) {
@@ -112,20 +141,24 @@ export const FindPlace = ({lon, lat}) => {
         }
     }, [coordinates])
     return (
-        <>
-            {nothingNearbyError && <p>Helaas is er geen LOCATIE in de buurt gevonden</p>}
-            {mapError && <p>Er is iets misgegaan bij het ophalen van het kaartje, probeer het later opnieuw</p>}
-            {error && <p>Er is iets misgegaan met het ophalen van de gegevens, probeer het later opnieuw</p>}
-            {loading && <p>laden</p>}
-            {map && <img alt='map' src={map}/>}
-            {coordinates && <ul className='places-list'> {
+        <>{path==='alcoholocator' && mode==='dm' && !isDrunk ? <Redirect to='/is-dit-wel-verstandig'/> :
+        <div className={tab}>
+            {nothingNearbyError &&
+            <p className={findError}>Helaas is er geen LOCATIE in de buurt gevonden</p>}
+            {mapError &&
+            <p className={findError}>Er is iets misgegaan bij het ophalen van het kaartje, probeer het later opnieuw</p>}
+            {error &&
+            <p className={findError}>Er is iets misgegaan met het ophalen van de gegevens, probeer het later opnieuw</p>}
+            {loading && <p className={findLoading}>laden</p>}
+            {map && <img className={mapImg} alt='map' src={map}/>}
+            {coordinates && <ul className={placesList}> {
                 inRangePlaces.map((place) => {
                         return (
-                            <li className='place-item' key={place.data}>
-                                <span className='place-name'>{adress(place.data)[0]}</span>
-                                <span className='place-street'>{adress(place.data)[1]}</span>
-                                <span className='place-postal'>{adress(place.data)[2]}</span>
-                                <button className='go-button' type='button'>Go!</button>
+                            <li className={placeItem} key={place.data}>
+                                <span className={placeName}>{adress(place.data)[0]}</span>
+                                <span className={placeStreet}>{adress(place.data)[1]}</span>
+                                <span className={placePostal}>{adress(place.data)[2]}</span>
+                                <button className={goButton} type='button'>Go!</button>
                             </li>
                         )
                     }
@@ -133,7 +166,7 @@ export const FindPlace = ({lon, lat}) => {
             }
             </ul>
             }
-        </>
+        </div>
+            }</>
     )
-
 }

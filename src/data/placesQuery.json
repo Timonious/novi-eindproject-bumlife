@@ -1,7 +1,7 @@
 [
   {
-    "path": "eten",
-    "maxDistance": 1000,
+    "pathName": "eten",
+    "maxDistance": 100000,
     "resultAmount": 4,
     "maxDistanceDm": 500,
     "resultAmountDm": 2,
@@ -13,7 +13,7 @@
     ]
   },
   {
-    "path": "alcoholocator",
+    "pathName": "alcoholocator",
     "maxDistance": 1000,
     "resultAmount": 3,
     "maxDistanceDm": 800,
@@ -24,7 +24,7 @@
     ]
   },
   {
-    "path": "platte-pet",
+    "pathName": "platte-pet",
     "maxDistance": 5000,
     "resultAmount": 1,
     "maxDistanceDm": 4000,
@@ -34,7 +34,7 @@
     ]
   },
   {
-    "path": "slaaphuis",
+    "pathName": "slaaphuis",
     "maxDistance": 3000,
     "resultAmount": 2,
     "maxDistanceDm": 1000,
@@ -49,7 +49,7 @@
     ]
   },
   {
-    "path": "blote-hemel",
+    "pathName": "blote-hemel",
     "maxDistance": 10000,
     "resultAmount": 4,
     "maxDistanceDm": 1000,
@@ -61,7 +61,7 @@
     ]
   },
   {
-    "path": "overdekt",
+    "pathName": "overdekt",
     "maxDistance": 3000,
     "resultAmount": 4,
     "maxDistanceDm": 1000,
