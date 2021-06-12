@@ -1,0 +1,79 @@
+:root{
+    --tab-color:hsla(70,60%,38%,0.8);
+    --tab-color-no-op:hsl(70,60%,38%);
+    --second-color:hsl(250,67%,90%);
+    --darker-color:hsl(70,60%,15%);
+    --yellow-text:hsl(60,60%,55%);
+    --button-shadow:black 1px 1px 3px;
+    --button-corner:7px;
+    --button-border:none;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    display: flex;
+    min-height: 98%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.tab {
+    background-image: linear-gradient(var(--tab-color), var(--darker-color));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top-right-radius: 60px;
+}
+
+.curve-counter {
+    display: flex;
+}
+
+.page-title {
+    position: absolute;
+    top:80px;
+    left: 20px;
+    font-size: 25px;
+    text-shadow: -1px -1px 0 var(--darker-color),
+    1px -1px 0 var(--darker-color),
+    -1px 1px var(--darker-color),
+    1px 1px var(--darker-color);
+    color: var(--yellow-text);
+}
+
+#curved-corner {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+}
+#curved-corner:before {
+    content: "";
+    display: block;
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    border-radius: 50%;
+}
+#curved-corner:before {
+    bottom: 0;
+    left: 0;
+    box-shadow: -50px 50px 0 0 var(--tab-color);
+}
+
+button {
+    background-color: var(--second-color);
+    border-radius: var(--button-corner);
+    border: var(--button-border);
+    box-shadow: var(--button-shadow);
+    color: var(--darker-color);
+    font-family: "Segoe UI", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,32 +1,33 @@
 import React, {useContext} from "react"
-import {Link} from "react-router-dom"
-import { DrunkModeContext } from "../../context/DrunkModeContextProvider"
+import {useHistory} from "react-router-dom"
+import {DrunkModeContext} from "../../context/DrunkModeContextProvider"
 import content from "../../data/content.json"
+import {PageTitle} from "../../components/pageTitle/PageTitle";
 
 export const FundQuery = () => {
+    const history = useHistory()
     const {mode} = useContext(DrunkModeContext)
-    const {[mode]: {
-        fundCN: {
-            tab,
-            questionCn,
-            fundButton
-        },
-        fundTxt: {
-            question,
-            yes,
-            no
+    const {
+        [mode]: {
+            fundQCN: {
+                questionCn,
+                fundButton
+            },
+            fundTxt: {
+                question,
+                yes,
+                no
+            }
         }
-    }
     } = content
     return (
-        <div className={tab}>
-        <p className={questionCn}>{question}</p>
-        <Link to='/slaaphuis'>
-            <button type='button' className={fundButton}>{yes}</button>
-        </Link>
-            <Link to='/platte-pet'>
-                <button type='button' className={fundButton}>{no}</button>
-            </Link>
-        </div>
+        <>
+            <PageTitle params={'is-er-geld'}/>
+            <div className='tab'>
+                <p className={questionCn}>{question}</p>
+                    <button type='button' className={fundButton} onClick={() => history.push('/slaaphuis')}>{yes}</button>
+                    <button type='button' className={fundButton} onClick={() => history.push('/platte-pet')}>{no}</button>
+            </div>
+        </>
     )
 }

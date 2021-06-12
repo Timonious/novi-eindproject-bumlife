@@ -2,7 +2,7 @@ import React, {createContext, useState} from 'react'
 
 export const DrunkModeContext = createContext(null)
 
-export function DrunkModeContextProvider({children}) {
+export const DrunkModeContextProvider = ({children}) => {
     const [admittedDrunk, toggleAdmittedDrunk] = useState(false)
     const [mode, setMode] = useState('nm')
     const toggleMode = () => {
@@ -18,8 +18,7 @@ export function DrunkModeContextProvider({children}) {
     const toggleAA = () => {
         if (admittedDrunk) {
             toggleAdmittedDrunk(false)
-        }
-        else {
+        } else {
             toggleAdmittedDrunk(true)
         }
     }

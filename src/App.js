@@ -2,22 +2,25 @@ import React, {useState, useEffect, useContext} from 'react'
 import './App.css'
 import {Switch, Route, Redirect} from 'react-router-dom'
 import axios from "axios"
-import {Header} from "./components/Header"
+import {Header} from "./components/header/Header"
 import {Main} from "./pages/main/Main"
 import {Drink} from "./pages/drink/Drink"
 import {Sleep} from "./pages/sleep/Sleep"
 import {FindPlace} from "./pages/location page/FindPlace"
 import {FundQuery} from "./pages/sleep/FundQuery"
-import {Alcalculator} from "./pages/drink/alcalculator/Alcalculator"
-import {SunsetCounter} from "./components/SunsetCounter"
-import {AuthenticateDrunkness} from "./pages/AuthenticateDrunkness/AuthenticateDrunkness"
-import {DrunkModeContext, DrunkModeContextProvider} from "./context/DrunkModeContextProvider"
+import {Alcocalculator} from "./pages/drink/alcocalculator/Alcocalculator"
+import {SunsetCounter} from "./components/sunsetCounter/SunsetCounter"
+import {AuthenticateDrunkness} from "./pages/drink/AuthenticateDrunkness"
+import {DrunkModeContext} from "./context/DrunkModeContextProvider"
+import {InlogContext} from "./context/InlogContextProvider";
+import {LogIn} from "./pages/logIn/LogIn";
+import content from "./data/content.json"
 
 const apiKey = process.env.REACT_APP_API_KEY_WEATHER
 
 const App = () => {
-
-    const { isDrunk, mode } = useContext(DrunkModeContext)
+    const {loggedIn} = useContext(InlogContext)
+    const {isDrunk, mode} = useContext(DrunkModeContext)
     const [lat, setLat] = useState(null)
     const [lon, setLon] = useState(null)
     const [latRound, setLatRound] = useState(null)
@@ -25,6 +28,7 @@ const App = () => {
     const [error, setError] = useState(false)
     const [weatherData, setWeatherData] = useState(null)
     const [loading, setLoading] = useState(true)
+const {[mode]: {sunCounterCN:{midSection}}} = content
 
     useEffect(() => {
         const getCoords = (position) => {
@@ -35,12 +39,11 @@ const App = () => {
                 setLatRound(Math.round(position.coords.latitude))
             }
         }
-
         navigator.geolocation.getCurrentPosition(getCoords)
 
     }, [])
 
-    async function getWeather() {
+    const getWeather = async () => {
         setLoading(true)
         setError(false)
         try {
@@ -61,7 +64,10 @@ const App = () => {
     return (
         <>
             <Header/>
+            <div className='curve-counter'>
+            <div id='curved-corner'/>
             {loading ? <p className='loading'>laden</p> : <SunsetCounter weatherData={weatherData} error={error}/>}
+        </div>
             <Switch>
                 <Route path='/drinken'>
                     {!isDrunk && mode === 'dm' ? <Redirect to='/is-dit-wel-verstandig'/> : <Drink/>}
@@ -70,10 +76,15 @@ const App = () => {
                     <Sleep weatherData={weatherData} error={error}/>
                 </Route>
                 <Route path='/alcocalculator'>
-                    {!isDrunk && mode === 'dm' ? <Redirect to='/is-dit-wel-verstandig'/> : <Alcalculator/>}
+                    {loggedIn ?
+                        !isDrunk && mode === 'dm' ? <Redirect to='/is-dit-wel-verstandig'/> : <Alcocalculator/>
+                        : <LogIn/>}
                 </Route>
                 <Route path='/is-er-geld'>
                     <FundQuery/>
+                </Route>
+                <Route path='/log-in'>
+                    {loggedIn ? <Redirect to='/'/> : <LogIn/>}
                 </Route>
                 <Route path='/is-dit-wel-verstandig'>
                     <AuthenticateDrunkness/>

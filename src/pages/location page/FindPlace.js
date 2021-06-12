@@ -2,10 +2,12 @@ import React, {useEffect, useState, useContext} from "react"
 import {useParams, useRouteMatch, Redirect} from 'react-router-dom'
 import axios from "axios"
 import {adress} from '../../helpers/adressSplit'
-
+import {GoButton} from "../../components/GoButton"
+import {PageTitle} from "../../components/pageTitle/PageTitle";
 import {DrunkModeContext} from "../../context/DrunkModeContextProvider"
 import content from "../../data/content.json"
 import placesQ from '../../data/placesQuery.json'
+import bottle from "../../assets/bottles.png";
 
 const apiKey = process.env.REACT_APP_API_KEY_MAPS
 
@@ -14,7 +16,6 @@ export const FindPlace = ({lon, lat}) => {
     const {
         [mode]: {
             findCN: {
-                tab,
                 findLoading,
                 findError,
                 mapImg,
@@ -29,6 +30,7 @@ export const FindPlace = ({lon, lat}) => {
     } = content
 
     const {path} = useParams()
+    console.log(path)
     useRouteMatch('/:path')
     const i = placesQ.findIndex(x => x.pathName === path)
     const {[i]: {resultAmount, resultAmountDm, maxDistance, maxDistanceDm, queries}} = placesQ
@@ -44,7 +46,7 @@ export const FindPlace = ({lon, lat}) => {
     const [map, setMap] = useState(null)
     const [loading, setLoading] = useState(false)
 
-    async function getLocation(query) {
+    const getLocation = async (query) => {
         setLoading(true)
         setError(false)
         try {
@@ -141,32 +143,46 @@ export const FindPlace = ({lon, lat}) => {
         }
     }, [coordinates])
     return (
-        <>{path==='alcoholocator' && mode==='dm' && !isDrunk ? <Redirect to='/is-dit-wel-verstandig'/> :
-        <div className={tab}>
-            {nothingNearbyError &&
-            <p className={findError}>Helaas is er geen LOCATIE in de buurt gevonden</p>}
-            {mapError &&
-            <p className={findError}>Er is iets misgegaan bij het ophalen van het kaartje, probeer het later opnieuw</p>}
-            {error &&
-            <p className={findError}>Er is iets misgegaan met het ophalen van de gegevens, probeer het later opnieuw</p>}
-            {loading && <p className={findLoading}>laden</p>}
-            {map && <img className={mapImg} alt='map' src={map}/>}
-            {coordinates && <ul className={placesList}> {
-                inRangePlaces.map((place) => {
-                        return (
-                            <li className={placeItem} key={place.data}>
-                                <span className={placeName}>{adress(place.data)[0]}</span>
-                                <span className={placeStreet}>{adress(place.data)[1]}</span>
-                                <span className={placePostal}>{adress(place.data)[2]}</span>
-                                <button className={goButton} type='button'>Go!</button>
-                            </li>
+        <>
+            <PageTitle params={path}/>
+            {path === 'alcoholocator' && mode === 'dm' && !isDrunk ? <Redirect to='/is-dit-wel-verstandig'/> :
+                <div className='tab'>
+                    {nothingNearbyError &&
+                    <p className={findError}>Helaas is er geen LOCATIE in de buurt gevonden</p>}
+                    {mapError &&
+                    <p className={findError}>Er is iets misgegaan bij het ophalen van het kaartje, probeer het later
+                        opnieuw</p>}
+                    {error &&
+                    <p className={findError}>Er is iets misgegaan met het ophalen van de gegevens, probeer het later
+                        opnieuw</p>}
+                    {loading && <p className={findLoading}>laden</p>}
+                    {map && <img className={mapImg} alt='map' src={map}/>}
+                    {coordinates && <ul className={placesList}> {
+                        inRangePlaces.map((place) => {
+                                const {data} = place
+                                return (
+                                    <li className={placeItem} key={data}>
+                                        <span className={placeName}>{adress(data)[0]}</span>
+                                        <span className={placeStreet}>{adress(data)[1]}</span>
+                                        <span className={placePostal}>{adress(data)[2]}</span>
+                                        <GoButton
+                                            cN={goButton}
+                                            name={adress(data)[0]}
+                                            street={adress(data)[1]}
+                                            postal={adress(data)[2]}
+                                            lon={lon}
+                                            lat={lat}/>
+                                    </li>
+                                )
+                            }
                         )
                     }
-                )
-            }
-            </ul>
-            }
-        </div>
+                    </ul>
+                    }
+                    {path === 'alcoholocator' && <img alt='flessen'
+                                                      src={bottle}
+                                                      className=''/>}
+                </div>
             }</>
     )
 }

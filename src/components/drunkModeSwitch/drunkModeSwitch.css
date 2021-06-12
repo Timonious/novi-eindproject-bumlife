@@ -1,0 +1,41 @@
+.switch-wrapper {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.switch-text {
+    align-self: center;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.switch {
+    display: flex;
+    width: 80%;
+    height:43%;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 30px;
+    background-color: var(--tab-color);
+    border: black 3px solid;
+    margin: 6px;
+
+}
+
+.flick {
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    background-color: var(--darker-color);
+    margin-left: 2px;
+    margin-right: 2px;
+
+}
+
+.onOff {
+    font-size: 13px;
+    margin-left: 2px;
+    margin-right: 2px;
+}

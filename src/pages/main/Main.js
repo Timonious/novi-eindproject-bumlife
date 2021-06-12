@@ -1,29 +1,45 @@
-import React, { useContext } from "react"
-import {Link} from "react-router-dom"
-import { DrunkModeContext } from "../../context/DrunkModeContextProvider"
+import React, {useContext} from "react"
+import {useHistory} from "react-router-dom"
+import {DrunkModeContext} from "../../context/DrunkModeContextProvider"
 import content from "../../data/content.json"
+import './main.css'
+import {PageTitle} from "../../components/pageTitle/PageTitle"
 
 export const Main = () => {
-    const { mode } = useContext(DrunkModeContext)
-    const { [mode]: {mainCN: {
-        buttonContainer,
-        drinkButton,
-        sleepButton,
-        eatButton}
-        } } = content
+    const history = useHistory()
+    const {mode} = useContext(DrunkModeContext)
+    const {
+        [mode]: {
+            mainCN: {
+                tab,
+                buttonContainer,
+                drinkButton,
+                sleepButton,
+                eatButton
+            }
+        }
+    } = content
     return (
         <>
+        <div className='tab'>
             <div className={buttonContainer}>
-                <Link to='/drinken'>
-                    <button className={drinkButton} type='button'>Drinken</button>
-                </Link>
-                <Link to='/slapen'>
-                    <button className={sleepButton} type='button'>Slapen</button>
-                </Link>
-                <Link to='/eten'>
-                    <button className={eatButton} type='button'>Eten</button>
-                </Link>
+                    <button
+                        className={drinkButton}
+                        type='button'
+                        onClick={() => history.push('/drinken')}
+                    >Drinken</button>
+                    <button
+                        className={sleepButton}
+                        type='button'
+                        onClick={() => history.push('/slapen')}
+                    >Slapen</button>
+                    <button
+                        className={eatButton}
+                        type='button'
+                        onClick={() => history.push('/eten')}
+                    >Eten</button>
             </div>
-        </>
+        </div>
+</>
     )
 }

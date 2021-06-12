@@ -1,0 +1,171 @@
+.welcome-back {
+    margin: 16px;
+    font-size: 20px;
+    align-self: center;
+}
+
+.comp-calc-wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.calc-form {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.calc-form-label-nm {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+}
+
+.calc-form-label-dm {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.calc-selector {
+    background: transparent;
+    opacity: 0.8;
+    border: none;
+    border-bottom: 1px solid var(--darker-color);
+    color: var(--darker-color);
+}
+
+.calc-selector-option {
+    background-color: var(--tab-color);
+}
+
+.calc-field {
+    background: transparent;
+    opacity: 0.8;
+    border: none;
+    border-bottom: 1px solid var(--darker-color);
+    color: black;
+}
+
+::placeholder {
+    color: var(--darker-color);
+    opacity: 0.5;
+}
+
+.calc-button-nm {
+    margin: 6%;
+    width: 50%;
+    height: 8%;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.calc-button-dm {
+    margin: 6%;
+    width: 60%;
+    height: 10%;
+    border-radius: 4px;
+    font-size: 15px;
+}
+
+.calc-comp-tab {
+    display: flex;
+    width: 35%;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top-right-radius: 70px;
+    height: 340px;
+    margin-right: 16px;
+    background-image: linear-gradient(goldenrod, var(--darker-color));
+    border: grey solid 1px;
+}
+
+.calc-comp-title-nm {
+    font-size: 18px;
+    margin-top: 16%;
+    margin-left: 3%;
+}
+
+.calc-comp-title-dm {
+    font-size: 20px;
+    margin-top: 16%;
+    margin-left: 3%;
+}
+
+.calc-comp-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.calc-comp-item {
+    margin-top: 6%;
+    margin-right: 3%;
+    margin-left: 4%;
+}
+
+.calc-comp-name-nm {
+    font-size: 14px;
+}
+
+.calc-comp-name-dm {
+    font-size: 16px;
+}
+
+.calc-comp-euro-nm {
+    font-size: 14px;
+}
+
+.calc-comp-euro-dm {
+    font-size: 16px;
+}
+
+.green {
+    color: green;
+}
+
+.orange {
+    color: orange;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.yellow-green {
+    color: yellowgreen;
+}
+
+.red {
+    color: red;
+}
+
+.calc-comp-apl-name-nm {
+    font-size: 8px;
+}
+
+.calc-comp-apl-name-dm {
+    font-size: 10px;
+}
+
+.calc-comp-apl-exp-nm {
+    margin-bottom: 99%;
+    font-size: 8px;
+}
+
+.calc-comp-apl-exp-dm {
+    margin-bottom: 35%;
+    font-size: 10px;
+}
+
+.calc-bottles-nm {
+    width: 100%;
+    position: fixed;
+    bottom: -110px;
+}
+
+.calc-bottles-dm {
+    width: 100%;
+    position: fixed;
+    bottom: -160px;
+}

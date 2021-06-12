@@ -1,4 +1,3 @@
-export  function adress(string) {
-    const splitIt = string.split(',')
-    return splitIt
+export const adress = (string) => {
+    return string.split(',')
 }

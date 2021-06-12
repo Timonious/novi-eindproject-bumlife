@@ -158,7 +158,7 @@ Bertus is net wakker en kan na een zware nacht wel een kleine oppepper gebruiken
 Eenmaal aangekomen in de supermarkt start hij zij **BumLife** app op en tikt op Alcocalculator.
 
 - Actor: Bertus Rietman (gebruiker)
-- Trigger: gebruiker opent de rekentool (Alcalculator)
+- Trigger: gebruiker opent de rekentool (Alcocalculator)
 - Main succes scenario: 
 1. gebruiker selecteert het soort drank uit een lijst.
 2. gebruiker selecteert de inhoudsmaat uit een lijst (aangepast na de vorige keuze)

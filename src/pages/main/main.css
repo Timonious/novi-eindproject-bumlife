@@ -1,0 +1,83 @@
+:root {
+    --main-button-width-nm: 265px;
+    --main-button-height-nm: 45px;
+    --main-button-margin: 20px;
+    --main-button-font-size-nm:25px;
+    --main-button-width-dm: 300px;
+    --main-button-height-dm: 103px;
+    --main-button-border-radius-dm:24px;
+}
+
+.main-button-container-nm {
+    margin-top: 35px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.drink-button-nm {
+    margin: var(--main-button-margin);
+    width: var(--main-button-width-nm);
+    height: var(--main-button-height-nm);
+    font-size: var(--main-button-font-size-nm);
+}
+
+.sleep-button-nm {
+    margin: var(--main-button-margin);
+    width: var(--main-button-width-nm);
+    height: var(--main-button-height-nm);
+    font-size: var(--main-button-font-size-nm);
+}
+
+.eat-button-nm {
+    margin: var(--main-button-margin);
+    width: var(--main-button-width-nm);
+    height: var(--main-button-height-nm);
+    font-size: var(--main-button-font-size-nm);
+}
+
+.main-tab-dm {
+    background-color: var(--tab-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top-right-radius: 100px;
+    padding-bottom: 20px;
+
+}
+
+.main-button-container-dm {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+}
+
+.drink-button-dm {
+    margin: var(--main-button-margin);
+    width: var(--main-button-width-dm);
+    height: var(--main-button-height-dm);
+    font-size: 45px;
+    border-radius: var(--main-button-border-radius-dm);
+    color:black;
+}
+
+.sleep-button-dm {
+    margin: var(--main-button-margin);
+    width: var(--main-button-width-dm);
+    height: var(--main-button-height-dm);
+    font-size: 65px;
+    border-radius: var(--main-button-border-radius-dm);
+    color:black;
+}
+
+.eat-button-dm {
+    margin: var(--main-button-margin);
+    width: var(--main-button-width-dm);
+    height: var(--main-button-height-dm);
+    font-size: 85px;
+    border-radius: var(--main-button-border-radius-dm);
+    color:black;
+}

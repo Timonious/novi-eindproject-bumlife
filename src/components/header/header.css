@@ -1,0 +1,38 @@
+.header {
+    position: fixed;
+    top: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.back-logo-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+.active {
+   display: none;
+}
+
+.back-txt {
+    font-size: 12px;
+}
+
+.logo {
+    width: 100%;
+    height: auto;
+
+
+}
+
+.header-logged-in-name {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 6px;
+}
+
+.log-off-on {
+border-radius: 3px;
+}

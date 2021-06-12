@@ -1,0 +1,31 @@
+.in-out-button-recommend {
+display: flex;
+    height: 50%;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sleep-weather-segment-nm {
+margin-bottom: 15%;
+}
+
+.sleep-button-container-nm {
+width: 80%;
+    height: 50%;
+padding-bottom: 30%;
+}
+
+.sleep-sleep-button-nm {
+height: 50px;
+    width:60%;
+    font-size: 20px;
+}
+
+.recommended-nm {
+text-decoration: underline;
+}
+
+.sleep-error-nm {
+color: darkred;
+}

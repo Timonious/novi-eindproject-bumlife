@@ -1,18 +1,20 @@
 import React, {useContext} from "react"
-import {Link} from "react-router-dom"
+import {useHistory} from "react-router-dom"
 import {DrunkModeContext} from "../../context/DrunkModeContextProvider"
 import content from "../../data/content.json"
+import {PageTitle} from "../../components/pageTitle/PageTitle";
+import './drink.css'
+import bottle from '../../assets/bottles.png'
 
 export const Drink = () => {
+    const history = useHistory()
     const {mode} = useContext(DrunkModeContext)
-    const {[mode]: {
+    const {
+        [mode]: {
             drinkCN: {
-                tab,
-                drinkButtonContainer,
-                alcoholocatorButton,
-                alcocalculatorButton,
-                findDrinkCn,
-                calculateDrinkCn
+                drinkButton,
+                drinkDescriptionCn,
+                bottles
             },
             drinkTxt: {
                 findDrinkTxt,
@@ -22,17 +24,31 @@ export const Drink = () => {
     } = content
 
     return (
-        <div className={tab}>
-            <div className={drinkButtonContainer}>
-                <Link to='/alcoholocator'>
-                    <button className={alcoholocatorButton} type='button'>Alcoholocator</button>
-                </Link>
-                <p className={findDrinkCn}>{findDrinkTxt}</p>
-                <Link to='alcocalculator'>
-                    <button className={alcocalculatorButton} type='button'>Alcocalculator</button>
-                </Link>
-                <p className={calculateDrinkCn}>{calculateDrinkTxt}</p>
+        <>
+            <PageTitle params={'drinken'}/>
+            <div className='tab'>
+                <div className='drink-content-container'>
+                <div className='drink-button-container'>
+                        <button
+                            className={drinkButton}
+                            type={bottles}
+                            onClick={() => history.push('/alcoholocator')}
+                        >Alcoholocator</button>
+                    <p className={drinkDescriptionCn}>{findDrinkTxt}</p>
+                </div>
+                    <div className='drink-button-container'>
+                        <button
+                            className={drinkButton}
+                            type='button'
+                            onClick={() => history.push('/alcocalculator')}
+                        >Alcocalculator</button>
+                    <p className={drinkDescriptionCn}>{calculateDrinkTxt}</p>
+                    </div>
+                </div>
+                <img alt='flessen'
+                     src={bottle}
+                     className={bottles}/>
             </div>
-        </div>
+        </>
     )
 }

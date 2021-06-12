@@ -1,10 +1,11 @@
 import React, {useEffect, useState, useContext} from "react";
-import {secondsToHm} from "../helpers/secondsToHm";
-import { DrunkModeContext } from "../context/DrunkModeContextProvider"
-import content from "../data/content.json"
+import {secondsToHm} from "../../helpers/secondsToHm";
+import { DrunkModeContext } from "../../context/DrunkModeContextProvider"
+import content from "../../data/content.json"
+import './sunsetCounter.css'
 
 
-export const SunsetCounter = ({weatherData, error}) => {
+export const SunsetCounter = ({weatherData, error, loading}) => {
     const { mode } = useContext(DrunkModeContext)
     const { [mode]: {sunCounterCN: {
         wrapper,
@@ -40,17 +41,18 @@ export const SunsetCounter = ({weatherData, error}) => {
     }, [weatherData])
     return (
         <>
-            {!sunsetCountdown && !dawnCountdown &&
+            {loading && !sunsetCountdown && !dawnCountdown &&
             <p className='loading'>laden</p>}
             {sunsetCountdown &&
-            <p className={wrapper}>
-                <span className='counter'>{secondsToHm(sunsetCountdown)}
-                </span><span className={text}> tot zonsondergang</span></p>}
+            <div className={wrapper}>
+                <span className={time}>{secondsToHm(sunsetCountdown)}
+                </span><span className={text}> tot zonsondergang</span>
+            </div>}
             {dawnCountdown &&
-            <p className={wrapper}>
+            <div className={wrapper}>
                 <span className={time} >{secondsToHm(dawnCountdown)}
                 </span><span className={text}> tot zonsopgang</span>
-            </p>}
+            </div>}
             {error && <p className={error}>er is iets misgegaan met het ophalen van de zonne-data</p>}
         </>
     )

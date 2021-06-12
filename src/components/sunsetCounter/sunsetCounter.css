@@ -1,0 +1,45 @@
+.sun-wrapper-nm {
+    display: flex;
+}
+
+.time-nm {
+    font-size: 27px;
+    align-self: flex-end;
+    text-shadow: -1px -1px 0 var(--darker-color),
+    1px -1px 0 var(--darker-color),
+    -1px 1px var(--darker-color),
+    1px 1px var(--darker-color);
+    color: var(--yellow-text);
+}
+
+.sun-text-nm {
+    margin-left: 10px;
+    align-self: flex-end;
+    font-weight: bold;
+    color: var(--darker-color);
+    font-size: 15px;
+}
+
+.sun-wrapper-dm {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.time-dm {
+    font-size: 45px;
+    text-align: center;
+    text-shadow: -1px -1px 0 var(--darker-color),
+    1px -1px 0 var(--darker-color),
+    -1px 1px var(--darker-color),
+    1px 1px var(--darker-color);
+    color: var(--yellow-text);
+}
+
+.sun-text-dm {
+    margin-left: 5px;
+    margin-bottom: 0;
+    align-self: flex-end;
+    font-size: 20px;
+    font-weight: bolder;
+}

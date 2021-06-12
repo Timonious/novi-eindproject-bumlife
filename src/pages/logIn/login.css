@@ -1,0 +1,96 @@
+
+.login-form-nm {
+    display: flex;
+    flex-direction: column;
+
+
+}
+.login-label-nm {
+display: flex;
+    flex-direction: column;
+    margin-right: 150px;
+    margin-top: 15px;
+    font-size: 15px;
+
+}
+
+.login-input-nm:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 30px var(--tab-color) inset !important;
+}
+.login-input-nm {
+    background: var(--tab-color);
+    border: none;
+    border-bottom: 1px solid var(--darker-color);
+    color: var(--darker-color);
+    font-size: 25px;
+    margin-top: 10px;
+    width: 195px;
+}
+.login-submit-nm {
+    align-self: flex-end;
+    margin-top: 10px;
+    font-size: 30px;
+    width: 40%;
+    height: 50px;
+}
+.login-error-nm {
+    font-size: 20px;
+    color: darkred;
+}
+
+.login-bottles-nm {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    object-position: 0 10%;
+}
+
+.login-form-dm {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+
+}
+.login-label-dm {
+    display: flex;
+    flex-direction: column;
+    margin-right: 150px;
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+.login-input-dm:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 30px var(--tab-color) inset !important;
+}
+
+.login-input-dm {
+    background: var(--tab-color);
+    border: none;
+    border-bottom: 1px solid var(--darker-color);
+    color: var(--darker-color);
+    font-size: 30px;
+    margin-top: 10px;
+    width: 195px;
+}
+
+.login-submit-dm {
+    align-self: flex-end;
+    margin-top: 30px;
+    font-size: 30px;
+    width: 180px;
+    height: 70px;
+}
+
+.login-error-dm {
+    font-size: 20px;
+    color: darkred;
+    z-index: 2;
+}
+
+.login-bottles-dm {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    object-position: 0 10%;
+}
+
