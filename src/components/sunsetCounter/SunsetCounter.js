@@ -21,18 +21,15 @@ export const SunsetCounter = ({weatherData, error, loading}) => {
             setInterval(() => {
                 const now = Math.floor(Date.now() / 1000)
                 if (now > sunrise) {
-
                     setDawnCountdown(null)
                     setSunsetCountdown(sunset - now)
                 }
                 if (now > sunset && now < weatherData.daily[1].sunrise) {
-
                     setSunsetCountdown(null)
                     setDawnCountdown(weatherData.daily[1].sunrise - now)
                 }
                 if (now < sunset &&
                     now < sunrise) {
-
                     setSunsetCountdown(null)
                     setDawnCountdown(sunrise - now)
                 }
