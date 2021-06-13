@@ -44,11 +44,10 @@
     align-items: center;
     border-top-right-radius: 100px;
     padding-bottom: 20px;
-
 }
 
 .main-button-container-dm {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
