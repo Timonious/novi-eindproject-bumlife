@@ -8,6 +8,7 @@ import {DrunkModeContext} from "../../context/DrunkModeContextProvider"
 import content from "../../data/content.json"
 import placesQ from '../../data/placesQuery.json'
 import bottle from "../../assets/bottles.png";
+import './findPlace.css'
 
 const apiKey = process.env.REACT_APP_API_KEY_MAPS
 
@@ -24,13 +25,13 @@ export const FindPlace = ({lon, lat}) => {
                 placeName,
                 placeStreet,
                 placePostal,
-                goButton
+                goButton,
+                bottles
             }
         }
     } = content
 
     const {path} = useParams()
-    console.log(path)
     useRouteMatch('/:path')
     const i = placesQ.findIndex(x => x.pathName === path)
     const {[i]: {resultAmount, resultAmountDm, maxDistance, maxDistanceDm, queries}} = placesQ
@@ -63,7 +64,7 @@ export const FindPlace = ({lon, lat}) => {
         setLoading(true)
         setMapError(false)
         try {
-            const {data} = await axios.get(`https://image.maps.ls.hereapi.com/mia/1.6/mapview?apiKey=${apiKey}&poi=${coordinates}&w=400&h=300&z=15`,
+            const {data} = await axios.get(`https://image.maps.ls.hereapi.com/mia/1.6/mapview?apiKey=${apiKey}&poi=${coordinates}&w=300&h=100&z=15`,
                 {responseType: "blob"})
             setMap(URL.createObjectURL(data))
         } catch (e) {
@@ -162,9 +163,11 @@ export const FindPlace = ({lon, lat}) => {
                                 const {data} = place
                                 return (
                                     <li className={placeItem} key={data}>
-                                        <span className={placeName}>{adress(data)[0]}</span>
-                                        <span className={placeStreet}>{adress(data)[1]}</span>
-                                        <span className={placePostal}>{adress(data)[2]}</span>
+                                        <div className='place-text-wrap'>
+                                            <span className={placeName}>{adress(data)[0]}</span>
+                                            <span className={placeStreet}>{adress(data)[1]}</span>
+                                            <span className={placePostal}>{adress(data)[2]}</span>
+                                        </div>
                                         <GoButton
                                             cN={goButton}
                                             name={adress(data)[0]}
@@ -179,9 +182,7 @@ export const FindPlace = ({lon, lat}) => {
                     }
                     </ul>
                     }
-                    {path === 'alcoholocator' && <img alt='flessen'
-                                                      src={bottle}
-                                                      className=''/>}
+                    {path === 'alcoholocator' && <img alt='flessen' src={bottle} className={bottles}/>}
                 </div>
             }</>
     )
