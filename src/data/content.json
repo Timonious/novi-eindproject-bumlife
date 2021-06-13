@@ -32,7 +32,8 @@
       "placeName": "find-place-name-nm",
       "placeStreet": "find-place-street-nm",
       "placePostal": "find-place-postal-nm",
-      "goButton": "find-go-button-nm"
+      "goButton": "find-go-button-nm",
+      "bottles": "find-bottles-nm"
     },
     "fundQCN": {
       "questionCn": "fund-q-nm",
@@ -105,7 +106,8 @@
       "placeName": "find-place-name-dm",
       "placeStreet": "find-place-street-dm",
       "placePostal": "find-place-postal-dm",
-      "goButton": "find-go-button-dm"
+      "goButton": "find-go-button-dm",
+      "bottles": "find-bottles-nm"
     },
     "fundQCN": {
       "questionCn": "fund-q-dm",
