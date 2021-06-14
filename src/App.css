@@ -29,6 +29,7 @@ body {
     flex-direction: column;
     align-items: center;
     border-top-right-radius: 60px;
+    animation: ease-in-out;
 }
 
 .curve-counter {
