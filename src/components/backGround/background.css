@@ -1,0 +1,72 @@
+.main-background-mob,
+.eat-background-mob,
+.sleep-background-mob,
+.drink-background-mob {
+    position: fixed;
+    object-fit: cover;
+    background: no-repeat fixed;
+    z-index: -1;
+}
+.main-background-mob {
+    top: -30px;
+    right: 0;
+}
+
+.eat-background-mob {
+   top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.drink-background-mob {
+    top:0;
+}
+
+.sleep-background-mob {
+    height: 100%;
+    width: 100%;
+    top: 0;
+}
+
+.main-background-web,
+.eat-background-web,
+.sleep-background-web,
+.drink-background-web {
+    display: none;
+}
+
+@media screen and (min-width: 600px) {
+    .main-background-mob,
+    .eat-background-mob,
+    .sleep-background-mob,
+    .drink-background-mob {
+display: none;
+    }
+
+    .main-background-web,
+    .eat-background-web,
+    .sleep-background-web,
+    .drink-background-web {
+       display: block;
+    position: fixed;
+    object-fit: cover;
+    background: no-repeat fixed;
+    z-index: -1;
+       top: 0;
+        height: 1100px;
+    }
+
+    .main-background-web {
+        height: 1100px;
+    }
+
+    .eat-background-web {
+        height: 800px;
+    }
+
+    .sleep-background-web {
+
+    }
+    .drink-background-web {}
+
+}

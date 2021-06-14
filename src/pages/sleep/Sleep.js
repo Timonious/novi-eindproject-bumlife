@@ -1,9 +1,10 @@
-import React, {useEffect, useState, useContext} from "react"
-import {useHistory} from "react-router-dom"
-import {DrunkModeContext} from "../../context/DrunkModeContextProvider"
-import content from "../../data/content.json"
-import {PageTitle} from "../../components/pageTitle/PageTitle";
+import React, {useEffect, useState, useContext} from 'react'
+import {useHistory} from 'react-router-dom'
+import {DrunkModeContext} from '../../context/DrunkModeContextProvider'
+import content from '../../data/content.json'
+import {PageTitle} from '../../components/pageTitle/PageTitle'
 import './sleep.css'
+import {BackGround} from "../../components/backGround/Background";
 
 export const Sleep = ({weatherData, error}) => {
     const history = useHistory()
@@ -51,32 +52,42 @@ export const Sleep = ({weatherData, error}) => {
 
     return (
         <>
+            {mode === 'nm'&& <BackGround p='slapen'/>}
             <PageTitle params={'slapen'}/>
             <div className='tab'>
                 {weatherData && <div className={weatherSegment}>
-                    <p> Vannacht {rain ? <span>gaat het regenen </span> : <span>blijft het droog </span>}</p>
-                    <p>en het koelt af tot {avgNightTemp && <span>{avgNightTemp} graden</span>}
+                    <p> Vannacht {rain ?
+                        <span>gaat het regenen
+                        </span> :
+                        <span>blijft het droog
+                        </span>}
+                    </p>
+                    <p>en het koelt af tot {avgNightTemp &&
+                    <span>{avgNightTemp} graden
+                    </span>}
                     </p>
                 </div>}
                 {error && <p className={retrieveError}>er is iets fout gegaan met het ophalen van het weer, sorry</p>}
                 <div className={buttonContainer}>
                     <div className='in-out-button-recommend'>
-                    {rain && avgNightTemp > 10 &&
-                        <button className={button} type='button' onClick={() => history.push('/overdekt')}>Overdekt</button>}
-                    {avgNightTemp < 10 ?
+                        {rain && avgNightTemp > 10 &&
                         <button className={button} type='button'
-                                onClick={() => history.push('/overdekt')}>Overdekt</button>
-                        : <>
+                                onClick={() => history.push('/overdekt')}>Overdekt</button>}
+                        {avgNightTemp < 10 ?
                             <button className={button} type='button'
-                                    onClick={() => history.push('/blote-hemel')}>Buiten
-                            </button>
-                            {!rain && avgNightTemp > 10 && <span className={recommend}>Aanrader!</span>}
-                        </>}
+                                    onClick={() => history.push('/overdekt')}>Overdekt</button>
+                            : <>
+                                <button className={button} type='button'
+                                        onClick={() => history.push('/blote-hemel')}>Buiten
+                                </button>
+                                {!rain && avgNightTemp > 10 && <span className={recommend}>Aanrader!</span>}
+                            </>}
                     </div>
-                        <div className='in-out-button-recommend'>
-                    <button className={button} type='button' onClick={() => history.push('/is-er-geld')}>Binnen</button>
-                    {avgNightTemp < 10 && <span className={recommend}>Aanrader!</span>}
-                </div>
+                    <div className='in-out-button-recommend'>
+                        <button className={button} type='button' onClick={() => history.push('/is-er-geld')}>Binnen
+                        </button>
+                        {avgNightTemp < 10 && <span className={recommend}>Aanrader!</span>}
+                    </div>
                 </div>
             </div>
         </>

@@ -1,10 +1,12 @@
-import React, {useContext} from "react"
-import {useHistory} from "react-router-dom"
-import {DrunkModeContext} from "../../context/DrunkModeContextProvider"
-import content from "../../data/content.json"
-import {PageTitle} from "../../components/pageTitle/PageTitle";
+import React, {useContext} from 'react'
+import {useHistory} from 'react-router-dom'
+import {DrunkModeContext} from '../../context/DrunkModeContextProvider'
+import content from '../../data/content.json'
+import {PageTitle} from '../../components/pageTitle/PageTitle'
 import './drink.css'
 import bottle from '../../assets/bottles.png'
+import {BackGround} from "../../components/backGround/Background";
+
 
 export const Drink = () => {
     const history = useHistory()
@@ -25,6 +27,7 @@ export const Drink = () => {
 
     return (
         <>
+            {mode === 'nm'&& <BackGround p='drinken'/>}
             <PageTitle params={'drinken'}/>
             <div className='tab'>
                 <div className='drink-content-container'>

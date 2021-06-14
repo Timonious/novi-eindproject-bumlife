@@ -2,7 +2,7 @@
   {
     "pathName": "eten",
     "maxDistance": 100000,
-    "resultAmount": 4,
+    "resultAmount": 3,
     "maxDistanceDm": 500,
     "resultAmountDm": 2,
     "queries": [
@@ -51,7 +51,7 @@
   {
     "pathName": "blote-hemel",
     "maxDistance": 10000,
-    "resultAmount": 4,
+    "resultAmount": 3,
     "maxDistanceDm": 1000,
     "resultAmountDm": 1,
     "queries": [

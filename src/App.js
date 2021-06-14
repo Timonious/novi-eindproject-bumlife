@@ -1,20 +1,20 @@
 import React, {useState, useEffect, useContext} from 'react'
-import './App.css'
 import {Switch, Route, Redirect} from 'react-router-dom'
-import axios from "axios"
-import {Header} from "./components/header/Header"
-import {Main} from "./pages/main/Main"
-import {Drink} from "./pages/drink/Drink"
-import {Sleep} from "./pages/sleep/Sleep"
-import {FindPlace} from "./pages/location page/FindPlace"
-import {FundQuery} from "./pages/sleep/FundQuery"
-import {Alcocalculator} from "./pages/drink/alcocalculator/Alcocalculator"
-import {SunsetCounter} from "./components/sunsetCounter/SunsetCounter"
-import {AuthenticateDrunkness} from "./pages/drink/AuthenticateDrunkness"
-import {DrunkModeContext} from "./context/DrunkModeContextProvider"
-import {InlogContext} from "./context/InlogContextProvider";
-import {LogIn} from "./pages/logIn/LogIn";
-import content from "./data/content.json"
+import axios from 'axios'
+import './App.css'
+import {Header} from './components/header/Header'
+import {Main} from './pages/main/Main'
+import {Drink} from './pages/drink/Drink'
+import {Sleep} from './pages/sleep/Sleep'
+import {FindPlace} from './pages/location page/FindPlace'
+import {FundQuery} from './pages/sleep/FundQuery'
+import {Alcocalculator} from './pages/drink/alcocalculator/Alcocalculator'
+import {SunsetCounter} from './components/sunsetCounter/SunsetCounter'
+import {AuthenticateDrunkness} from './pages/drink/authenticateDrunkness/AuthenticateDrunkness'
+import {DrunkModeContext} from './context/DrunkModeContextProvider'
+import {LogIn} from './pages/logIn/LogIn'
+import {InlogContext} from './context/InlogContextProvider'
+import loadingImg from './assets/loading-man.png'
 
 const apiKey = process.env.REACT_APP_API_KEY_WEATHER
 
@@ -28,7 +28,6 @@ const App = () => {
     const [error, setError] = useState(false)
     const [weatherData, setWeatherData] = useState(null)
     const [loading, setLoading] = useState(true)
-const {[mode]: {sunCounterCN:{midSection}}} = content
 
     useEffect(() => {
         const getCoords = (position) => {
@@ -66,7 +65,7 @@ const {[mode]: {sunCounterCN:{midSection}}} = content
             <Header/>
             <div className='curve-counter'>
             <div id='curved-corner'/>
-            {loading ? <p className='loading'>laden</p> : <SunsetCounter weatherData={weatherData} error={error}/>}
+            {loading ? <div className='sun-load-wrap'><img alt='loading' src={loadingImg} className='loading-img'/><p className='loading'>zon zoom factor checken</p></div> : <SunsetCounter weatherData={weatherData} error={error}/>}
         </div>
             <Switch>
                 <Route path='/drinken'>

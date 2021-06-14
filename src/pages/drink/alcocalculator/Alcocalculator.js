@@ -1,13 +1,16 @@
-import {useState, useContext} from "react"
-import {useForm} from "react-hook-form"
+import {useState, useContext} from 'react'
+import {useForm} from 'react-hook-form'
 import drinks from '../../../data/drinks.json'
-import {colorCoderAPL} from "../../../helpers/colorCoderAPL"
-import {DrunkModeContext} from "../../../context/DrunkModeContextProvider"
-import {InlogContext} from "../../../context/InlogContextProvider"
-import content from "../../../data/content.json"
-import {PageTitle} from "../../../components/pageTitle/PageTitle"
+import {colorCoderAPL} from '../../../helpers/colorCoderAPL'
+import {DrunkModeContext} from '../../../context/DrunkModeContextProvider'
+import {InlogContext} from '../../../context/InlogContextProvider'
+import content from '../../../data/content.json'
+import {PageTitle} from '../../../components/pageTitle/PageTitle'
 import './alcocalculator.css'
 import bottle from '../../../assets/bottles.png'
+import mobBack from '../../../assets/drink-mob.jpg'
+import webBack from '../../../assets/drink-web.jpg'
+import {BackGround} from "../../../components/backGround/Background";
 
 export const Alcocalculator = () => {
     const {name} = useContext(InlogContext)
@@ -76,6 +79,7 @@ export const Alcocalculator = () => {
     }
     return (
         <>
+            {mode === 'nm'&& <BackGround p='alcocalculator'/>}
             <PageTitle params={'alcocalculator'}/>
             <div className='tab'>
                 <span className='welcome-back'>Welkom terug {name}</span>
@@ -106,18 +110,18 @@ export const Alcocalculator = () => {
                             </select></label>
 
                             {selectedSize === 'Anders' && (
-                                <input type='text' className='calc-field'name='other-size' autoComplete="off"
+                                <input type='text' className='calc-field' name='other-size' autoComplete='off'
                                        placeholder='inhoudsmaat (cl)' {...register('otherSize')}/>)}
                             <label className={formLabel} htmlFor='alcohol'>Alcohol
                             <select id='alcohol' className='calc-selector' {...register('percentage',)}>
-                                <option value=""/>
+                                <option value=''/>
                                 {drinks[selectedBooze].percentages.map((percentage) => {
                                     return (
                                         <option className='calc-selector-option' key={percentage}
                                                 value={percentage}>{percentage}</option>
                                     )
                                 })}
-                                <option className='calc-selector-option' value="other">Anders</option>
+                                <option className='calc-selector-option' value='other'>Anders</option>
                             </select></label>
                             {selectedPercentage === 'other' && (
                                 <>
@@ -125,7 +129,7 @@ export const Alcocalculator = () => {
                                     <input type='number'
                                            name='otherPercentage'
                                            className='calc-field'
-                                           autoComplete="off"
+                                           autoComplete='off'
                                            placeholder='Alcoholpercentage'
                                            {...register(
                                                'otherPercentage',
@@ -140,7 +144,7 @@ export const Alcocalculator = () => {
                             <input type='text'
                                    name='price'
                                    className='calc-field'
-                                   autoComplete="off"
+                                   autoComplete='off'
                                    {...register(
                                        'price',
                                        {pattern: /^[0-9]+(\.[0-9][0-9]?)?$/i,}

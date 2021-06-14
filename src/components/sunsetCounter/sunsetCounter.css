@@ -1,3 +1,12 @@
+.loading {
+    font-size: 20px;
+}
+
+.loading-img {
+    width: 30px;
+    height: auto;
+}
+
 .sun-wrapper-nm {
     display: flex;
 }
@@ -42,4 +51,13 @@
     align-self: flex-end;
     font-size: 20px;
     font-weight: bolder;
+}
+
+@media screen and (min-width: 600px) {
+    .sun-wrapper-dm {
+        display: flex;
+        flex-direction: row;
+    align-items: flex-end;
+
+    }
 }

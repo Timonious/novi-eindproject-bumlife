@@ -1,13 +1,3 @@
-:root {
-    --main-button-width-nm: 265px;
-    --main-button-height-nm: 45px;
-    --main-button-margin: 20px;
-    --main-button-font-size-nm:25px;
-    --main-button-width-dm: 300px;
-    --main-button-height-dm: 103px;
-    --main-button-border-radius-dm:24px;
-}
-
 .main-button-container-nm {
     margin-top: 35px;
     padding-bottom: 40px;
@@ -16,25 +6,13 @@
     align-items: center;
 }
 
-.drink-button-nm {
-    margin: var(--main-button-margin);
-    width: var(--main-button-width-nm);
-    height: var(--main-button-height-nm);
-    font-size: var(--main-button-font-size-nm);
-}
-
-.sleep-button-nm {
-    margin: var(--main-button-margin);
-    width: var(--main-button-width-nm);
-    height: var(--main-button-height-nm);
-    font-size: var(--main-button-font-size-nm);
-}
-
-.eat-button-nm {
-    margin: var(--main-button-margin);
-    width: var(--main-button-width-nm);
-    height: var(--main-button-height-nm);
-    font-size: var(--main-button-font-size-nm);
+.main-button-container-nm button {
+    margin: 20px;
+    width: 100%;
+    height: 15%;
+    font-size: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .main-tab-dm {
@@ -54,29 +32,22 @@
     flex-direction: column-reverse;
 }
 
+.main-button-container-dm button {
+    margin: 20px;
+    width: 300px;
+    height: 103px;
+    border-radius: 24px;
+    color: black;
+}
+
 .drink-button-dm {
-    margin: var(--main-button-margin);
-    width: var(--main-button-width-dm);
-    height: var(--main-button-height-dm);
     font-size: 45px;
-    border-radius: var(--main-button-border-radius-dm);
-    color:black;
 }
 
 .sleep-button-dm {
-    margin: var(--main-button-margin);
-    width: var(--main-button-width-dm);
-    height: var(--main-button-height-dm);
     font-size: 65px;
-    border-radius: var(--main-button-border-radius-dm);
-    color:black;
 }
 
 .eat-button-dm {
-    margin: var(--main-button-margin);
-    width: var(--main-button-width-dm);
-    height: var(--main-button-height-dm);
     font-size: 85px;
-    border-radius: var(--main-button-border-radius-dm);
-    color:black;
 }

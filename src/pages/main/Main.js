@@ -1,9 +1,9 @@
-import React, {useContext} from "react"
-import {useHistory} from "react-router-dom"
-import {DrunkModeContext} from "../../context/DrunkModeContextProvider"
-import content from "../../data/content.json"
+import React, {useContext} from 'react'
+import {useHistory} from 'react-router-dom'
+import {DrunkModeContext} from '../../context/DrunkModeContextProvider'
+import {BackGround} from '../../components/backGround/Background'
+import content from '../../data/content.json'
 import './main.css'
-import {PageTitle} from "../../components/pageTitle/PageTitle"
 
 export const Main = () => {
     const history = useHistory()
@@ -11,7 +11,6 @@ export const Main = () => {
     const {
         [mode]: {
             mainCN: {
-                tab,
                 buttonContainer,
                 drinkButton,
                 sleepButton,
@@ -21,6 +20,7 @@ export const Main = () => {
     } = content
     return (
         <>
+            {mode === 'nm'&& <BackGround p='main'/>}
         <div className='tab'>
             <div className={buttonContainer}>
                     <button

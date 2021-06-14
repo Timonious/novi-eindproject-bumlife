@@ -21,8 +21,6 @@
 .logo {
     width: 100%;
     height: auto;
-
-
 }
 
 .header-logged-in-name {
@@ -35,4 +33,16 @@
 
 .log-off-on {
 border-radius: 3px;
+}
+
+@media screen and (min-width: 600px) {
+    .logo {
+        max-width: 500px;
+    }
+
+    .header {
+        background-color: var(--tab-color);
+        border-bottom-right-radius: 40px;
+        border-bottom-left-radius: 40px;
+    }
 }

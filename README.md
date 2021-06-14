@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+#BumLife
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Dit is BumLife, de app om de levenswijze van de dak en thuislozen te ondersteunen.
+Dit doet de app door verschillende plaatsen te zoeken die voor de doelgroep interessant kunnen zijn, 
+zoals slaapplaatsen, en zaken waar eten of drinken gekocht kunnen worden.
 
-## Available Scripts
+![main](screenshot.jpg)
 
-In the project directory, you can run:
+screenshot van de hoofdpagina
 
-### `npm start`
+###benodigdheden
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+BumLife maakt gebruik van 2 api's; een om weerdata op te halen, en een om locatie gegevens en kaarten op te halen.
+In de **.env** file in de bronmap van de app moeten de volgende api-keys staan:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+REACT_APP_API_KEY_WEATHER=7cdc14e16f454f3bd384c9786975e9f6
 
-### `npm test`
+REACT_APP_API_KEY_MAPS=q3T-6l3scc4VFLtSh-pnUT9ortYCo34Zuer1YRFsp2g
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###installatie-instructies:
 
-### `npm run build`
+Eerst moeten de node_modules geinstalleerd worden door het volgende commando in de terminal te runnen:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Wanneer dit geinstalleerd is, kan de applicatie gestart worden met behulp van:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm start
 
-### `npm run eject`
+###inloggegevens:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+BumLife heeft een Alcocalculator waarmee de beste prijs voor alcoholische versnaperingen berekend kan worden.
+Deze is alleen beschikbaar voor een aantal vooraf geregistreerde gebruikers.
+Hieronder een lijst van de gebruikersnamen en hun wachtwoorden:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Gebruikersnaam: Bertus
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Wachtwoord: streetLife64
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Gebruikersnaam: Jan
 
-## Learn More
+Wachtwoord: Fietstas4ever
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Gebruikersnaam: Hendrik
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Wachtwoord: Goudstaafje43
 
-### Code Splitting
+Gebruikersnaam: Betsy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Wachtwoord: CatLady9Smells
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

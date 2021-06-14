@@ -1,14 +1,16 @@
-import React, {useEffect, useState, useContext} from "react"
+import React, {useEffect, useState, useContext} from 'react'
 import {useParams, useRouteMatch, Redirect} from 'react-router-dom'
-import axios from "axios"
+import axios from 'axios'
 import {adress} from '../../helpers/adressSplit'
-import {GoButton} from "../../components/GoButton"
-import {PageTitle} from "../../components/pageTitle/PageTitle";
-import {DrunkModeContext} from "../../context/DrunkModeContextProvider"
-import content from "../../data/content.json"
+import {GoButton} from '../../components/goButton/GoButton'
+import {PageTitle} from '../../components/pageTitle/PageTitle'
+import {DrunkModeContext} from '../../context/DrunkModeContextProvider'
+import content from '../../data/content.json'
 import placesQ from '../../data/placesQuery.json'
-import bottle from "../../assets/bottles.png";
+import bottle from '../../assets/bottles.png'
+import loadingImg from '../../assets/loading-man.png'
 import './findPlace.css'
+import {BackGround} from "../../components/backGround/Background";
 
 const apiKey = process.env.REACT_APP_API_KEY_MAPS
 
@@ -18,10 +20,7 @@ export const FindPlace = ({lon, lat}) => {
         [mode]: {
             findCN: {
                 findLoading,
-                findError,
-                mapImg,
                 placesList,
-                placeItem,
                 placeName,
                 placeStreet,
                 placePostal,
@@ -64,8 +63,8 @@ export const FindPlace = ({lon, lat}) => {
         setLoading(true)
         setMapError(false)
         try {
-            const {data} = await axios.get(`https://image.maps.ls.hereapi.com/mia/1.6/mapview?apiKey=${apiKey}&poi=${coordinates}&w=300&h=100&z=15`,
-                {responseType: "blob"})
+            const {data} = await axios.get(`https://image.maps.ls.hereapi.com/mia/1.6/mapview?apiKey=${apiKey}&poi=${coordinates}&w=300&h=100&z=17&poithm=1&poifc=red&t=12`,
+                {responseType: 'blob'})
             setMap(URL.createObjectURL(data))
         } catch (e) {
             console.error(e)
@@ -143,26 +142,28 @@ export const FindPlace = ({lon, lat}) => {
             getMap()
         }
     }, [coordinates])
+
     return (
         <>
+           {mode === 'nm'&& <BackGround p={path}/>}
             <PageTitle params={path}/>
             {path === 'alcoholocator' && mode === 'dm' && !isDrunk ? <Redirect to='/is-dit-wel-verstandig'/> :
                 <div className='tab'>
                     {nothingNearbyError &&
-                    <p className={findError}>Helaas is er geen LOCATIE in de buurt gevonden</p>}
+                    <p className='find-error'>Helaas is er geen LOCATIE in de buurt gevonden</p>}
                     {mapError &&
-                    <p className={findError}>Er is iets misgegaan bij het ophalen van het kaartje, probeer het later
+                    <p className='find-error'>Er is iets misgegaan bij het ophalen van het kaartje, probeer het later
                         opnieuw</p>}
                     {error &&
-                    <p className={findError}>Er is iets misgegaan met het ophalen van de gegevens, probeer het later
+                    <p className='find-error'>Er is iets misgegaan met het ophalen van de gegevens, probeer het later
                         opnieuw</p>}
-                    {loading && <p className={findLoading}>laden</p>}
-                    {map && <img className={mapImg} alt='map' src={map}/>}
+                    {loading && <div><img alt='loading' src={loadingImg} className='loading-img'/><p className={findLoading}>Een moment geduld, gegevens worden opgehaald</p></div>}
+                    {map && <img className='find-map' alt='map' src={map}/>}
                     {coordinates && <ul className={placesList}> {
                         inRangePlaces.map((place) => {
                                 const {data} = place
                                 return (
-                                    <li className={placeItem} key={data}>
+                                    <li className='find-place-item' key={data}>
                                         <div className='place-text-wrap'>
                                             <span className={placeName}>{adress(data)[0]}</span>
                                             <span className={placeStreet}>{adress(data)[1]}</span>

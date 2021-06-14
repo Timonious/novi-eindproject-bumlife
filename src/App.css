@@ -16,10 +16,11 @@ html {
 body {
     font-family: "Segoe UI", sans-serif;
     display: flex;
-    min-height: 98%;
+    min-height: 100%;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: flex-end;
+    background-color: var(--second-color);
 }
 
 .tab {
@@ -34,16 +35,9 @@ body {
     display: flex;
 }
 
-.page-title {
-    position: absolute;
-    top:80px;
-    left: 20px;
-    font-size: 25px;
-    text-shadow: -1px -1px 0 var(--darker-color),
-    1px -1px 0 var(--darker-color),
-    -1px 1px var(--darker-color),
-    1px 1px var(--darker-color);
-    color: var(--yellow-text);
+.loading-img {
+    width: 30px;
+    height: auto;
 }
 
 #curved-corner {
@@ -76,4 +70,10 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media screen and (min-width: 600px) {
+    .tab {
+        max-width: 600px;
+    }
 }

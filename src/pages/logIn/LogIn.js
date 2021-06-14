@@ -1,12 +1,13 @@
 import React, {useContext, useState} from 'react'
-import {PageTitle} from "../../components/pageTitle/PageTitle"
-import {useForm} from "react-hook-form"
-import {InlogContext} from "../../context/InlogContextProvider"
-import {DrunkModeContext} from "../../context/DrunkModeContextProvider"
+import {PageTitle} from '../../components/pageTitle/PageTitle'
+import {useForm} from 'react-hook-form'
+import {InlogContext} from '../../context/InlogContextProvider'
+import {DrunkModeContext} from '../../context/DrunkModeContextProvider'
 import userData from '../../data/users.json'
 import content from '../../data/content.json'
 import './login.css'
-import bottle from "../../assets/bottles.png";
+import bottle from '../../assets/bottles.png'
+import {BackGround} from "../../components/backGround/Background";
 
 
 export const LogIn = () => {
@@ -25,7 +26,7 @@ export const LogIn = () => {
     } = content
     const [error, setError] = useState(' ')
     const {register, handleSubmit} = useForm(
-        {criteriaMode: 'all', mode: "onSubmit"})
+        {criteriaMode: 'all', mode: 'onSubmit'})
     const {logToggle, setName} = useContext(InlogContext)
     const onSubmit = (data) => {
         setError(' ')
@@ -47,6 +48,7 @@ export const LogIn = () => {
     }
     return (
         <>
+            {mode === 'nm'&& <BackGround p='log-in'/>}
             <PageTitle params={'log-in'}/>
             <div className='tab'>
                 <form className={formCN} onSubmit={handleSubmit(onSubmit)}>

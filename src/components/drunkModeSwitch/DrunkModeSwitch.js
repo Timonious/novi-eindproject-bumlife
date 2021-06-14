@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, {useContext} from 'react'
 import {DrunkModeContext} from "../../context/DrunkModeContextProvider"
 import './drunkModeSwitch.css'
 
@@ -6,12 +6,6 @@ export const DrunkModeSwitch = () => {
     const {toggleMode, mode} = useContext(DrunkModeContext)
     return (
         <div className='switch-wrapper'>
-            {/*<button*/}
-            {/*    type='button'*/}
-            {/*    className='switch'*/}
-            {/*    onClick={toggleMode}*/}
-            {/*>{mode === 'dm' ? 'on' : 'off'}</button>*/}
-
             {mode === 'dm' ?
                 <button
                     type='button'
@@ -25,15 +19,9 @@ export const DrunkModeSwitch = () => {
                     onClick={toggleMode}
                 ><span className='onOff'>off</span><span className='flick'/></button>
             }
-
             <span className='switch-text'>
                 drunk-mode
             </span>
-
-
-
-
-
         </div>
     )
 }

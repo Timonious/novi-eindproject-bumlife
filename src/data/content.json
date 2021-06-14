@@ -1,10 +1,7 @@
 {
   "nm": {
     "mainCN": {
-      "buttonContainer": "main-button-container-nm",
-      "drinkButton": "drink-button-nm",
-      "sleepButton": "sleep-button-nm",
-      "eatButton": "eat-button-nm"
+      "buttonContainer": "main-button-container-nm"
     },
     "drinkCN": {
       "drinkButtonContainer": "drink-button-container-nm",
@@ -25,10 +22,7 @@
     },
     "findCN": {
       "findLoading": "find-loading-nm",
-      "findError": "find-error-nm",
-      "mapImg": "find-map-nm",
       "placesList": "find-places-list-nm",
-      "placeItem": "find-place-item-nm",
       "placeName": "find-place-name-nm",
       "placeStreet": "find-place-street-nm",
       "placePostal": "find-place-postal-nm",
@@ -68,9 +62,6 @@
       "buttonCN": "login-submit-nm",
       "errorMsg": "login-error-nm",
       "bottles": "login-bottles-nm"
-    },
-    "findPlaceCN": {
-      "bottles": "find-bottles-nm"
     }
   },
   "dm": {
@@ -99,15 +90,12 @@
     },
     "findCN": {
       "findLoading": "find-loading-dm",
-      "findError": "find-error-dm",
-      "mapImg": "find-map-nm",
       "placesList": "find-places-list-dm",
-      "placeItem": "find-place-item-dm",
       "placeName": "find-place-name-dm",
       "placeStreet": "find-place-street-dm",
       "placePostal": "find-place-postal-dm",
       "goButton": "find-go-button-dm",
-      "bottles": "find-bottles-nm"
+      "bottles": "find-bottles-dm"
     },
     "fundQCN": {
       "questionCn": "fund-q-dm",
@@ -142,9 +130,6 @@
       "buttonCN": "login-submit-dm",
       "errorMsg": "login-error-dm",
       "bottles": "login-bottles-dm"
-    },
-    "findPlaceCN": {
-      "bottles": "find-bottles-dm"
     }
   }
 }

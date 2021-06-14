@@ -1,4 +1,5 @@
 import React from 'react'
+import './goButton.css'
 
 export const GoButton = ({name, street, postal, lon, lat, cN}) => {
 

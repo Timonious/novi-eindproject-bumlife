@@ -1,4 +1,5 @@
 import React from 'react'
+import './pageTitle.css'
 
 export const PageTitle = ({params}) => {
     const title = () => {
